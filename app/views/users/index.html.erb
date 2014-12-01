@@ -4,3 +4,9 @@
 <h4>LGA</h4>
 <h4>EWR</h4>
 <h4>JFK</h4>
+
+<ul>
+<% @users.each do |user| %>
+  <li><%= user.name %></li>
+<% end %>
+</ul>
