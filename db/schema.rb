@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201211404) do
+ActiveRecord::Schema.define(version: 20141201224149) do
 
   create_table "airports", force: true do |t|
     t.string   "name"
@@ -50,10 +50,11 @@ ActiveRecord::Schema.define(version: 20141201211404) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
 end
