@@ -12,4 +12,24 @@
  *
  *= require_tree .
  *= require_self
+ //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
+ //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
+ //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
+ //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
  */
+@import "bootstrap"
+
+body {
+ padding-top: 70px;
+ padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+ position: static;
+ display: block;
+ margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+ margin: 5px 0;
+}
