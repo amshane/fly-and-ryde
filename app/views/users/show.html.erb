@@ -1,4 +1,11 @@
 <h1>Welcome <%= @user.first_name %>!</h1>
+<h3>Pending Ride-Shares</h3>
+<ul>
+  <% @user.pending_landings.each do |landing| %>
+  <% matched_user = landing.get_pending_match.user %>
+    <li><%= matched_user.first_name %>: <%= matched_user.arrival_time %></li>
+  <% end %>
+</ul>
 
 <h3>Destinations</h3>
 <ul>

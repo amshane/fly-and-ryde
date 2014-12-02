@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
   validates_formatting_of :phone_number, :using => :us_phone 
 
+  def pending_landings
+    Landing.where(:status => "pending", :user_id => self.id)
+  end
+
 end
