@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20141202203931) do
     t.integer  "user_id"
     t.integer  "destination_id"
     t.integer  "ride_id"
-    t.boolean  "complete"
-    t.datetime "arrival_time"
+    t.time     "arrival_time"
+    t.boolean  "complete",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "airline"

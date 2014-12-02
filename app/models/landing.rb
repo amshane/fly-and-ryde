@@ -9,7 +9,7 @@ class Landing < ActiveRecord::Base
     matches_array = []
     landings = Landing.where(:status => "available")
     landings.each do |l|
-      if self.airport_id == l.airport_id && self.arrival_date == l.arrival_date && self.id != l.user_id
+      if self.airport_id == l.airport_id && self.arrival_date == l.arrival_date && self.user_id != l.user_id
         matches_array << l
       end
     end
@@ -17,7 +17,7 @@ class Landing < ActiveRecord::Base
   end
 
   def get_pending_match
-    Landing.where(:ride_id => self.ride_id).where.not(:id => self.id)[0] 
+    Landing.where(:ride_id => self.ride_id, :status => "requested").where.not(:id => self.id)[0] 
   end
 
 end

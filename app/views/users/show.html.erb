@@ -1,11 +1,25 @@
 <h1>Welcome <%= @user.first_name %>!</h1>
-<h3>Pending Ride-Shares</h3>
-<ul>
-  <% @user.pending_landings.each do |landing| %>
-  <% matched_user = landing.get_pending_match.user %>
-    <li><%= matched_user.first_name %>: <%= matched_user.arrival_time %></li>
-  <% end %>
-</ul>
+
+<% if @user.pending_landings.size > 0 %>
+  <h3>Pending Ride-Shares</h3>
+  <ul>
+    <% @user.pending_landings.each do |landing| %>
+    <% matched_landing = landing.get_pending_match %>
+    <% matched_user = matched_landing.user %>
+      <li><%= matched_user.first_name %>: <%= matched_landing.arrival_time %></li>
+
+      <%= form_for([@user, landing]) do |f| %>
+        <%= f.hidden_field :status, :value => "complete" %>
+        <%= f.submit "Accept" %>
+      <% end %>
+
+      <%= form_for([@user, landing]) do |f| %>
+        <%= f.hidden_field :status, :value => "available" %>
+        <%= f.submit "Reject" %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
 
 <h3>Destinations</h3>
 <ul>
@@ -26,3 +40,6 @@
 
   <%= f.submit %>
 <% end %>
+<br>
+<br>
+<%= link_to "Find A Buddy To Leave The Airport!", new_user_landing_path(@user) %>

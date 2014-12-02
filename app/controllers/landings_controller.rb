@@ -22,10 +22,26 @@ class LandingsController < ApplicationController
     end
   end
 
+  def update
+    @landing = Landing.find(params[:id])
+    if @landing.update(status_params)
+      if @landing.status == "available"
+        redirect_to user_landing_path(@landing.user, @landing)
+      else
+        @landing.get_pending_match.status = "available"
+        redirect_to ride_path(@landing.ride)
+      end
+    end
+  end
+
   private
 
   def landing_params
     params.require(:landing).permit(:airport_id, :user_id, :destination_id, :ride_id, :arrival_time, :complete, :airline, :flight_num, :arrival_date)
+  end
+
+  def status_params
+    params.require(:landing).permit(:status)
   end
 
 end

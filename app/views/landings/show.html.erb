@@ -6,6 +6,7 @@
     Name: <%= match.user.first_name %><br>
     Arrival Time: <%= match.arrival_time %>
     <%= form_for @ride do |f| %>
+      <%= f.hidden_field :user_id, :value => @user.id %>
       <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
       <%= f.hidden_field :accepter_landing_id, :value => match.id %>
       <%= f.submit "Select" %>
