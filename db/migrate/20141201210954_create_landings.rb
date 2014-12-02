@@ -6,7 +6,7 @@ class CreateLandings < ActiveRecord::Migration
       t.integer :destination_id
       t.integer :ride_id
       t.boolean :complete
-      t.datetime :arrival_time
+      t.time :arrival_time
 
       t.timestamps
     end

@@ -1,1 +1,18 @@
 <%= @user.first_name %>
+<ul>
+  <% @user.destinations.each do |destination| %>
+    <li><%= destination.name %>: <%= destination.address %></li>
+  <% end %>
+</ul>
+
+<%= form_for @destination do |f| %>
+  <%= f.hidden_field :user_id, :value => @user.id %><br>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %><br>
+
+  <%= f.submit %>
+<% end %>
