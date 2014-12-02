@@ -15,6 +15,11 @@
 <h3>I have a future flight</h3>
 
 <%= form_for([@user, @landing]) do |f| %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  
+  <%= f.label :airport_id, "Airport" %>
+  <%= f.collection_select :airport_id, Airport.all, :id, :name, {:prompt => "Select your airport"} %><br>
+
   <%= f.label :airline, "Airline" %>
   <%= f.text_field :airline %><br>
 

@@ -9,6 +9,7 @@ class LandingsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @landing = Landing.find(params[:id])
+    @ride = Ride.new
   end
 
   def create
