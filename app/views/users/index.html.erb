@@ -1,12 +1,7 @@
-<h3>Hi there!</h3>
-<h4>Which airport are you at?</h4>
-
-<h4>LGA</h4>
-<h4>EWR</h4>
-<h4>JFK</h4>
+<h1>Users</h1>
 
 <ul>
-<% @users.each do |user| %>
-  <li><%= link_to user.first_name, user_path(user) %></li>
-<% end %>
+  <% @users.each do |user| %>
+    <li><%= link_to user.first_name, user_path(user) %></li>
+  <% end %>
 </ul>

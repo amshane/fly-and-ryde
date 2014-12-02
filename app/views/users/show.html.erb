@@ -1,10 +1,13 @@
-<%= @user.first_name %>
+<h1>Welcome <%= @user.first_name %>!</h1>
+
+<h3>Destinations</h3>
 <ul>
   <% @user.destinations.each do |destination| %>
     <li><%= destination.name %>: <%= destination.address %></li>
   <% end %>
 </ul>
 
+<h3>Make a New Destination</h3>
 <%= form_for @destination do |f| %>
   <%= f.hidden_field :user_id, :value => @user.id %><br>
 

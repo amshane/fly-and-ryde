@@ -1,3 +1,5 @@
+<h1>Sign Up</h1>
+
 <%= form_for @user, {:id => 'userForm'} do |f| %>
   <%= f.label :first_name %>
   <%= f.text_field :first_name %><br>
@@ -10,12 +12,3 @@
 
   <%= f.submit %>
 <% end %>
-<!-- <input type="text" class="form-control bfh-phone" data-format="+1 (ddd) ddd-dddd"> -->
-<!-- <form id="phoneForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-sm-3 control-label">Phone number</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="phoneNumber" />
-        </div>
-    </div>
-</form> -->

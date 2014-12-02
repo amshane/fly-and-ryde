@@ -3,6 +3,7 @@ class SeedDatabase
   USERS = [["Katie", "Hoffman", "7202327272"], ["Harold", "Cooper", "3038956008"], ["Ayanthika", "Motha", "2125657878"], ["Julia", "Zhang", "7804342323"], ["Sam", "Marcus", "3035556767"], ["Allison", "Shane", "4846669001"]]
   AIRPORTS = [["John F. Kennedy International Airport", "JFK"],["Newark Liberty International Airport", "EWR"],["LaGuardia Airport","LGA"]]
   STREET_NAMES = ["Abbey Rd.","Abbey Rd.","Broadway","Castro St.","Downing St.","Easy St.","Elm St.","Henry St.","High St.", "Lime St.","Ledo Rd.","Madison Ave.","Market Street","National Road","Ocean Dr."]
+  AIRLINES = ["Delta", "Spirit","JetBlue","American","Frontier","Virgin","Oceanic","PanAm","Southwest"]
 
   def initialize
     make_airports
@@ -49,19 +50,22 @@ class SeedDatabase
     [3,4,5,6].each do |id|
       user = User.find(id)
       day = rand(0..7)
-      hour = rand(6..20)
-      min = [00,05,15,20,25,30,35,45,55].sample
-      arrival_time = (Date.today - day).to_datetime.change(hour:hour,min:min)
-      create_landing(user, arrival_time)
+      hour = rand(1..12)
+      arrival_time = ActiveSupport::TimeZone["America/New_York"].parse("2014-12-0#{day} #{hour}pm")
+      arrival_date = Date.new(2014,12,day)
+      create_landing(user, arrival_time, arrival_date)
     end
   end
 
-  def create_landing(user, arrival_time)
+  def create_landing(user, arrival_time, arrival_date)
     Landing.create!(
       :airport_id => Airport.all.sample.id,
       :user_id => user.id,
       :destination_id => user.destinations.sample,
-      :arrival_time => arrival_time
+      :arrival_time => arrival_time,
+      :arrival_date => arrival_date,
+      :airline => AIRLINES.sample,
+      :flight_num => rand(10000...90000)
     )
   end
 
@@ -92,8 +96,11 @@ class SeedDatabase
       :user_id => user.id,
       :destination_id => user.destinations.last.id,
       :complete => true,
-      :arrival_time => arrival_time,
-      :ride_id => ride.id
+      :arrival_date => Date.new(2014,12,17),
+      :arrival_time => ActiveSupport::TimeZone["America/New_York"].parse("2014-12-17 2pm"),
+      :ride_id => ride.id,
+      :airline => AIRLINES.sample,
+      :flight_num => rand(10000...90000)
     )
   end
 
