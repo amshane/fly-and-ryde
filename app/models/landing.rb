@@ -4,4 +4,18 @@ class Landing < ActiveRecord::Base
   belongs_to :destination
   belongs_to :ride
 
+
+  def matches
+    matches_array = []
+    landings = Landing.all 
+    landings.each do |l|
+      if self.airport_id == l.airport_id && self.arrival_date == l.arrival_date
+        matches_array << l.user
+      end
+    end
+    matches_array
+
+
+  end
+
 end
