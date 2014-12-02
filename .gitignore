@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore the schema so DB will not default to schema
+/db/schema.rb
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
