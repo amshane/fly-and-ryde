@@ -1,1 +1,17 @@
-hello!
+<h2>Other Ryders Arriving At <%= @landing.airport.name%></h2>
+
+
+<% @landing.matches.each do |match| %>
+  <p>
+    Name: <%= match.user.first_name %><br>
+    Arrival Time: <%= match.arrival_time %>
+    <%= form_for @ride do |f| %>
+      <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
+      <%= f.hidden_field :accepter_landing_id, :value => match.id %>
+      <%= f.submit "Select" %>
+    <%end%>
+  </p>
+<%end%>
+
+
+

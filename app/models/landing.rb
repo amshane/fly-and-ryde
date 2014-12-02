@@ -10,7 +10,7 @@ class Landing < ActiveRecord::Base
     landings = Landing.all 
     landings.each do |l|
       if self.airport_id == l.airport_id && self.arrival_date == l.arrival_date
-        matches_array << l.user
+        matches_array << l
       end
     end
     matches_array
