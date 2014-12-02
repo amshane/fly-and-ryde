@@ -7,15 +7,13 @@ class Landing < ActiveRecord::Base
 
   def matches
     matches_array = []
-    landings = Landing.all 
+    landings = Landing.where.not(user_id: self.id)
     landings.each do |l|
       if self.airport_id == l.airport_id && self.arrival_date == l.arrival_date
         matches_array << l
       end
     end
     matches_array
-
-
   end
 
 end
