@@ -24,6 +24,9 @@
   <%= f.label :arrival_date, "Arrival Date" %>
   <%= f.date_field :arrival_date %><br>
 
+  <%= f.label :arrival_time, "Arrival Time" %>
+  <%= f.time_field :arrival_time %><br>
+
   <%= f.label :destination_id, "Destination" %>
   <%= f.collection_select :destination_id, @user.destinations, :id, :name, {:prompt => "Select your destination"} %>
 
