@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'users#new'
+  get '/auth/uber/callback' => 'sessions#create'
+  get '/signin' => 'sessions#new', :as => :signin
+  get '/signout' => 'sessions#destroy', :as => :signout
+  get '/auth/failure' => 'sessions#failure'
+  get '/privacy_policy' => 'static_pages#privacy_policy'
 
-  resources :users do 
+  resources :users do
     resources :landings
   end
 
   resources :destinations
   resources :rides
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -7,8 +7,8 @@ class Ride < ActiveRecord::Base
     requester = Landing.find(ride_params[:requester_landing_id])
     requester.update(:status => "requested", :ride_id => self.id)
 
-    accepter = Landing.find(ride_params[:accepter_landing_id])
-    accepter.update(:status => "pending", :ride_id => self.id)
+    acceptor = Landing.find(ride_params[:acceptor_landing_id])
+    acceptor.update(:status => "pending", :ride_id => self.id)
   end
 
 end

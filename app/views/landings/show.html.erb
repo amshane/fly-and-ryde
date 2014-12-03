@@ -8,7 +8,7 @@
     <%= form_for @ride do |f| %>
       <%= f.hidden_field :user_id, :value => @user.id %>
       <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
-      <%= f.hidden_field :accepter_landing_id, :value => match.id %>
+      <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
       <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
     <% end %>
   </p>
