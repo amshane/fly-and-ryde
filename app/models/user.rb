@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :destinations
 
   # validates :first_name, :last_name, presence: true
-  validates_formatting_of :phone_number, :using => :us_phone
+  # validates_formatting_of :phone_number, :using => :us_phone
 
   def self.create_with_omniauth(auth)
     create! do |user|
