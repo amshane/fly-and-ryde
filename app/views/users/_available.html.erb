@@ -1,0 +1,15 @@
+<h3>Your Upcoming Trips</h3>
+<ul>
+  <% @user.available_landings.each do |l| %>
+    <li>Your trip details:
+      <%= l.airport.abbreviation %> -
+      <%= l.arrival_date.strftime("%b %d, %Y") %> -
+      <%= l.arrival_time.strftime("%I:%M %p") %>
+    </li>
+    <ul>
+      <li>
+        <%= link_to "Find Buddy", user_landing_path(@user,l) %>
+      </li>
+    </ul>
+  <% end %> 
+</ul> 

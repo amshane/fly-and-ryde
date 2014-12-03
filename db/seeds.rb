@@ -51,7 +51,7 @@ class SeedDatabase
       user = User.find(id)
       day = rand(0..7)
       hour = rand(1..12)
-      arrival_time = ActiveSupport::TimeZone["America/New_York"].parse("2014-12-0#{day} #{hour}pm")
+      arrival_time = Time.now
       arrival_date = Date.new(2014,12,day)
       create_landing(user, arrival_time, arrival_date)
     end
@@ -97,7 +97,7 @@ class SeedDatabase
       :destination_id => user.destinations.last.id,
       :complete => true,
       :arrival_date => Date.new(2014,12,17),
-      :arrival_time => ActiveSupport::TimeZone["America/New_York"].parse("2014-12-17 2pm"),
+      :arrival_time => Time.now,
       :ride_id => ride.id,
       :airline => AIRLINES.sample,
       :flight_num => rand(10000...90000),

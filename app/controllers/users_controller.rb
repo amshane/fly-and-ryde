@@ -21,6 +21,19 @@ class UsersController < ApplicationController
     @destination = Destination.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params) && @user.valid_phone_number(user_params[:phone_number])
+      redirect_to user_path(@user)
+    else
+      render "edit", :notice => "You must enter your phone number to continue!"
+    end
+  end
+
   private
 
   def user_params

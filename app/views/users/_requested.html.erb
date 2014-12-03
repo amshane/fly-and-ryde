@@ -1,0 +1,15 @@
+<h3>Your Pending Matches</h3>
+<ul>
+  <% @user.requested_landings.each do |l| %>
+    <li>Your trip details:
+      <%= l.airport.abbreviation %> -
+      <%= l.arrival_date.strftime("%b %d, %Y") %> -
+      <%= l.arrival_time.strftime("%I:%M %p") %>
+    </li>
+    <ul>
+      <li>
+        <%= l.get_acceptor.first_name %> has not responded to your request yet.
+      </li>
+    </ul>
+  <% end %> 
+</ul> 

@@ -17,7 +17,11 @@ class Landing < ActiveRecord::Base
   end
 
   def get_pending_match
-    Landing.where(:ride_id => self.ride_id, :status => "requested").where.not(:id => self.id)[0] 
+    Landing.where(:ride_id => self.ride_id, :status => "requested").where.not(:id => self.id)[0]
+  end
+
+  def get_acceptor
+    Landing.where(:status => "pending", :ride_id => self.ride_id).where.not(:user_id => self.user_id)[0].user
   end
 
 end
