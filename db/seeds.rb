@@ -100,7 +100,8 @@ class SeedDatabase
       :arrival_time => ActiveSupport::TimeZone["America/New_York"].parse("2014-12-17 2pm"),
       :ride_id => ride.id,
       :airline => AIRLINES.sample,
-      :flight_num => rand(10000...90000)
+      :flight_num => rand(10000...90000),
+      :status => "complete"
     )
   end
 

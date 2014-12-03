@@ -1,0 +1,18 @@
+<div class="row">
+  <h1>Carpool Page</h1>
+</div>
+
+<div class="row">
+  <h3>Riders</h3>
+  <% @ride.landings.each do |landing| %>
+    <div class="col-md-4">
+      <h4><%= landing.user.first_name %></h4>
+      <ul>
+        <li><strong>Phone Number:</strong> <%= number_to_phone(landing.user.phone_number) %></li>
+        <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
+        <li><strong>Airline:</strong> <%= landing.airline %></li>
+        <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>

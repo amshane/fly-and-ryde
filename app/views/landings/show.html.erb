@@ -9,10 +9,10 @@
       <%= f.hidden_field :user_id, :value => @user.id %>
       <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
       <%= f.hidden_field :accepter_landing_id, :value => match.id %>
-      <%= f.submit "Select" %>
-    <%end%>
+      <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
+    <% end %>
   </p>
-<%end%>
+<% end %>
 
 
 

@@ -1,4 +1,4 @@
-<h2>Which airport are you at right now?</h2>
+<!-- <h2>Which airport are you at right now?</h2>
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-default">JFK</button>
@@ -12,30 +12,37 @@
 </div>
 
 <h2>OR</h2>
-<h3>I have a future flight</h3>
+<h3>I have a future flight</h3> -->
+<div class="row">
+  <h1>Enter your flight info</h1>
+</div>
 
-<%= form_for([@user, @landing]) do |f| %>
-  <%= f.hidden_field :user_id, :value => @user.id %>
-  
-  <%= f.label :airport_id, "Airport" %>
-  <%= f.collection_select :airport_id, Airport.all, :id, :name, {:prompt => "Select your airport"} %><br>
+<div class="row">
+  <%= form_for([@user, @landing]) do |f| %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+    
+    <%= f.label :airport_id, "Airport" %>
+    <%= f.collection_select :airport_id, Airport.all, :id, :name, {:prompt => "Select your airport"} %><br>
 
-  <%= f.label :airline, "Airline" %>
-  <%= f.text_field :airline %><br>
+    <%= f.label :airline, "Airline" %>
+    <%= f.text_field :airline %><br>
 
-  <%= f.label :flight_num, "Flight Number" %>
-  <%= f.text_field :flight_num %><br>
+    <%= f.label :flight_num, "Flight Number" %>
+    <%= f.text_field :flight_num %><br>
 
-  <%= f.label :arrival_date, "Arrival Date" %>
-  <%= f.date_field :arrival_date %><br>
+    <%= f.label :arrival_date, "Arrival Date" %>
+    <%= f.date_field :arrival_date %><br>
 
-  <%= f.label :arrival_time, "Arrival Time" %>
-  <%= f.time_field :arrival_time %><br>
+    <%= f.label :arrival_time, "Arrival Time" %>
+    <%= f.time_field :arrival_time %><br>
 
-  <%= f.label :destination_id, "Destination" %>
-  <%= f.collection_select :destination_id, @user.destinations, :id, :name, {:prompt => "Select your destination"} %>
+    <%= f.label :destination_id, "Destination" %>
+    <%= f.collection_select :destination_id, @user.destinations, :id, :name, {:prompt => "Select your destination"} %><br>
 
-  <%= f.submit %>
-<% end %>
+    <%= link_to "Make a new destination", user_path(@user) %><br>
+
+    <%= f.submit "Submit flight", :class => "btn btn-primary" %>
+  <% end %>
+</div>
 
 

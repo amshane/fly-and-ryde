@@ -19,11 +19,6 @@
  */
 @import "bootstrap";
 
-body {
- padding-top: 70px;
- padding-bottom: 30px;
-}
-
 .theme-dropdown .dropdown-menu {
  position: static;
  display: block;
@@ -32,4 +27,16 @@ body {
 
 .theme-showcase > p > .btn {
  margin: 5px 0;
+}
+
+.center-container {
+  text-align: center;
+}
+
+#inline-form {
+  display: inline-block;
+}
+
+#h4-inline-block {
+  display: inline-block;
 }
