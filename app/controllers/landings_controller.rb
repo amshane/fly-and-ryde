@@ -26,14 +26,14 @@ class LandingsController < ApplicationController
     @landing = Landing.find(params[:id])
     if @landing.update(status_params)
       if @landing.status == "available"
+        @landing.get_pending_match.update(:status => "available")
         redirect_to user_landing_path(@landing.user, @landing)
       else
-        @landing.get_pending_match.status = "available"
+        @landing.get_pending_match.update(:status => "complete")
         redirect_to ride_path(@landing.ride)
       end
     end
   end
-
   private
 
   def landing_params
