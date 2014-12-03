@@ -1,23 +1,27 @@
-<h2>Other Ryders Arriving At <%= @landing.airport.name%></h2>
+<h2>Other Riders Arriving At <%= @landing.airport.name%></h2>
 
   <p>Your trip details:
     <%= @landing.airport.abbreviation %> -
     <%= @landing.arrival_date.strftime("%b %d, %Y") %> -
     <%= @landing.arrival_time.strftime("%I:%M %p") %>
   </p>
-
-<% @landing.matches.each do |match| %>
-  <p>
-    Name: <%= match.user.first_name %><br>
-    Arrival Time: <%= match.arrival_time %>
-    <%= form_for @ride do |f| %>
-      <%= f.hidden_field :user_id, :value => @user.id %>
-      <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
-      <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
-      <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
+  <% if @landing.matches.size < 1 %>
+    <h4>No one else is traveling around this time, please try again later!</h4>
+  <% else %>
+    <% @landing.matches.each do |match| %>
+      <p>
+        Name: <%= match.user.first_name %><br>
+        Arrival Time: <%= match.arrival_time %>
+        <%= form_for @ride do |f| %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+          <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
+          <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
+          <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
+        <% end %>
+      </p>
     <% end %>
-  </p>
-<% end %>
+  <% end %>
+
 
 <%= link_to "Go back to your profile", user_path(@user) %>
 
