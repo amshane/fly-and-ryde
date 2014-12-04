@@ -61,7 +61,7 @@ class SeedDatabase
     Landing.create!(
       :airport_id => Airport.all.sample.id,
       :user_id => user.id,
-      :destination_id => user.destinations.sample,
+      :destination_id => user.destinations.first.id,
       :arrival_time => arrival_time,
       :arrival_date => arrival_date,
       :airline => AIRLINES.sample,

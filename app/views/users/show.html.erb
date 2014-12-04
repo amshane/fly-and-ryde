@@ -32,8 +32,10 @@
     <h3>Destinations</h3>
     <ul>
       <% @user.destinations.each do |destination| %>
-        <li><%= destination.name %>: <%= destination.address %></li>
-        <%= link_to "Edit", edit_destination_path(destination) %>   
+        <li><%= destination.name.capitalize %>: <%= destination.address %></li>
+        Neighborhood: <%= destination.neighborhood %><br>
+        Borough: <%= destination.borough %><br>
+        <%= link_to "Edit", edit_destination_path(destination) %>  -    
         <%= link_to "Delete", destination_path(destination), method: :delete, data: {:confirm => "Are you sure you want to delete this destination?"} %>
       <% end %>
     </ul>

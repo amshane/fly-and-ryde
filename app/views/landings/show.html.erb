@@ -15,9 +15,9 @@
         <% if @landing.arrival_time < match.arrival_time %>
           Your Expected Wait Time Is: <%= @landing.get_wait_time(match) %><br>
         <% else %>
-          Your Match Will Land <%= @landing.get_wait_time(match) %> Before You<br>
+          <%= match.user.first_name %> Will Land <%= @landing.get_wait_time(match) %> Before You<br>
         <%end%>
-        <%= match.user.first_name %> is also going to <%= match.destination.borough %>
+        <%= match.user.first_name %>'s destination is <%= match.destination.neighborhood %>, which is also in <%= match.destination.borough %>!
         <%= form_for @ride do |f| %>
           <%= f.hidden_field :user_id, :value => @user.id %>
           <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
