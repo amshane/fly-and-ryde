@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :rides, through: :landings
   has_many :airports, through: :landings
   has_many :destinations
+  has_many :areas, through: :destinations
 
   # validates :first_name, :last_name, presence: true
   # validates_formatting_of :phone_number, :using => :us_phone

@@ -10,6 +10,7 @@ class SeedDatabase
     make_users_and_destinations
     make_landings
     make_common_ride
+    create_neighborhoods
   end
 
   def make_users_and_destinations
@@ -103,6 +104,125 @@ class SeedDatabase
       :flight_num => rand(10000...90000),
       :status => "complete"
     )
+  end
+
+  def create_neighborhoods
+    create_manhattan_neighborhoods
+    create_brooklyn_neighborhoods
+    create_queens_neighborhoods
+  end
+
+  def create_manhattan_neighborhoods
+    Area.create([
+      {borough: "Manhattan", neighborhood: "Battery Park City"},
+      {borough: "Manhattan", neighborhood: "Chelsea"},
+      {borough: "Manhattan", neighborhood: "East Harlem"},
+      {borough: "Manhattan", neighborhood: "East Village"},
+      {borough: "Manhattan", neighborhood: "Financial District"},
+      {borough: "Manhattan", neighborhood: "Flatiron"},
+      {borough: "Manhattan", neighborhood: "Gramercy"},
+      {borough: "Manhattan", neighborhood: "Hamilton Heights"},
+      {borough: "Manhattan", neighborhood: "Harlem"},
+      {borough: "Manhattan", neighborhood: "Inwood"},
+      {borough: "Manhattan", neighborhood: "Kips Bay"},
+      {borough: "Manhattan", neighborhood: "Lower East Side"},
+      {borough: "Manhattan", neighborhood: "Manhattan Valley"},
+      {borough: "Manhattan", neighborhood: "Midtown East"},
+      {borough: "Manhattan", neighborhood: "Midtown West"},
+      {borough: "Manhattan", neighborhood: "Morningside Heights"},
+      {borough: "Manhattan", neighborhood: "Murray Hill"},
+      {borough: "Manhattan", neighborhood: "NoHo"},
+      {borough: "Manhattan", neighborhood: "Roosevelt Island"},
+      {borough: "Manhattan", neighborhood: "Soho"},
+      {borough: "Manhattan", neighborhood: "Tribeca"},
+      {borough: "Manhattan", neighborhood: "Union Square"},
+      {borough: "Manhattan", neighborhood: "Upper East Side"},
+      {borough: "Manhattan", neighborhood: "Upper West Side"},
+      {borough: "Manhattan", neighborhood: "Washington Heights"},
+      {borough: "Manhattan", neighborhood: "West Village"}
+    ])
+  end
+
+  def create_brooklyn_neighborhoods
+    Area.create([
+      {borough: "Brooklyn", neighborhood: "Bay Ridge"},
+      {borough: "Brooklyn", neighborhood: "Bedford Stuyvesant"},
+      {borough: "Brooklyn", neighborhood: "Bensonhurst"},
+      {borough: "Brooklyn", neighborhood: "Boerum Hill"},
+      {borough: "Brooklyn", neighborhood: "Borough Park"},
+      {borough: "Brooklyn", neighborhood: "Brighton Beach"},
+      {borough: "Brooklyn", neighborhood: "Brooklyn Heights"},
+      {borough: "Brooklyn", neighborhood: "Brownsville"},
+      {borough: "Brooklyn", neighborhood: "Bushwick"},
+      {borough: "Brooklyn", neighborhood: "Canarsie"},
+      {borough: "Brooklyn", neighborhood: "Carroll Gardens"},
+      {borough: "Brooklyn", neighborhood: "Clinton Hill"},
+      {borough: "Brooklyn", neighborhood: "Cobble Hill"},
+      {borough: "Brooklyn", neighborhood: "Coney Island"},
+      {borough: "Brooklyn", neighborhood: "Crown Heights"},
+      {borough: "Brooklyn", neighborhood: "Ditmas Park"},
+      {borough: "Brooklyn", neighborhood: "Dumbo"},
+      {borough: "Brooklyn", neighborhood: "Dyker Heights"},
+      {borough: "Brooklyn", neighborhood: "East New York"},
+      {borough: "Brooklyn", neighborhood: "Flatbush"},
+      {borough: "Brooklyn", neighborhood: "Fort Greene"},
+      {borough: "Brooklyn", neighborhood: "Fort Hamilton"},
+      {borough: "Brooklyn", neighborhood: "Gravesend"},
+      {borough: "Brooklyn", neighborhood: "Greenpoint"},
+      {borough: "Brooklyn", neighborhood: "Kensington"},
+      {borough: "Brooklyn", neighborhood: "Midwood"},
+      {borough: "Brooklyn", neighborhood: "Ocean Hill"},
+      {borough: "Brooklyn", neighborhood: "Park Slope"},
+      {borough: "Brooklyn", neighborhood: "Prospect Heights"},
+      {borough: "Brooklyn", neighborhood: "Prospect Lefferts Gardens"},
+      {borough: "Brooklyn", neighborhood: "Red Hook"},
+      {borough: "Brooklyn", neighborhood: "Sheepshead Bay"},
+      {borough: "Brooklyn", neighborhood: "Sunset Park"},
+      {borough: "Brooklyn", neighborhood: "Vinegar Hill"},
+      {borough: "Brooklyn", neighborhood: "Williamsburg"},
+      {borough: "Brooklyn", neighborhood: "Windsor Terrace"}
+    ])
+  end
+
+  def create_queens_neighborhoods
+    Area.create([
+      {borough: "Queens", neighborhood: "Astoria"},
+      {borough: "Queens", neighborhood: "Bayside"},
+      {borough: "Queens", neighborhood: "Bellerose"},
+      {borough: "Queens", neighborhood: "Briarwood"},
+      {borough: "Queens", neighborhood: "College Point"},
+      {borough: "Queens", neighborhood: "Corona"},
+      {borough: "Queens", neighborhood: "Douglaston"},
+      {borough: "Queens", neighborhood: "Elmhurst"},
+      {borough: "Queens", neighborhood: "Far Rockaway"},
+      {borough: "Queens", neighborhood: "Floral Park"},
+      {borough: "Queens", neighborhood: "Flushing"},
+      {borough: "Queens", neighborhood: "Forest Hills"},
+      {borough: "Queens", neighborhood: "Fresh Meadows"},
+      {borough: "Queens", neighborhood: "Glen Oaks"},
+      {borough: "Queens", neighborhood: "Glendale"},
+      {borough: "Queens", neighborhood: "Hollis"},
+      {borough: "Queens", neighborhood: "Howard Beach"},
+      {borough: "Queens", neighborhood: "Jackson Heights"},
+      {borough: "Queens", neighborhood: "Jamaica"},
+      {borough: "Queens", neighborhood: "Kew Gardens"},
+      {borough: "Queens", neighborhood: "Kew Gardens Hills"},
+      {borough: "Queens", neighborhood: "Little Neck"},
+      {borough: "Queens", neighborhood: "Long Island City"},
+      {borough: "Queens", neighborhood: "Maspeth"},
+      {borough: "Queens", neighborhood: "Middle Village"},
+      {borough: "Queens", neighborhood: "Ozone Park"},
+      {borough: "Queens", neighborhood: "Queens Village"},
+      {borough: "Queens", neighborhood: "Rego Park"},
+      {borough: "Queens", neighborhood: "Richmond Hill"},
+      {borough: "Queens", neighborhood: "Ridgewood"},
+      {borough: "Queens", neighborhood: "St. Albans"},
+      {borough: "Queens", neighborhood: "Sunnyside"},
+      {borough: "Queens", neighborhood: "Utopia"},
+      {borough: "Queens", neighborhood: "Whitestone"},
+      {borough: "Queens", neighborhood: "Woodhaven"},
+      {borough: "Queens", neighborhood: "Woodside"}
+    ])
   end
 
 end

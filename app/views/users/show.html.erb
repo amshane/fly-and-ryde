@@ -3,41 +3,36 @@
     <h1>Welcome <%= @user.first_name %>!</h1>
     <h4>Your phone number: <%= number_to_phone(@user.phone_number)%></h4>
   </div>
-  <div class="col-md-6">
+
+
+
+  <div class="col-md-6 pull-right">
     <h3>Leaving on a trip?</h3>
-    <%= link_to "Find a carpool buddy", new_user_landing_path(@user), :class=> "btn btn-primary" %>
+    <%= link_to "Find a buddy to split your ride!", new_user_landing_path(@user), :class=> "btn btn-primary" %>
   </div>
 </div>
 
-<% if @user.pending_landings.size > 0 %>
-  <%= render "pending" %>
-<% end %>
-
-<% if @user.confirmed_landings.size > 0 %>
-  <%= render "confirmed" %>
-<% end %>
-
-<% if @user.available_landings.size > 0 %>
-  <%= render "available" %>
-<% end %>
-
-<% if @user.requested_landings.size > 0 %>
-  <%= render "requested" %>
-<% end %>
-
 <div class="row">
-
   <div class="col-md-6">
-    <h3>Destinations</h3>
-    <ul>
-      <% @user.destinations.each do |destination| %>
-        <li><%= destination.name %>: <%= destination.address %></li>
-      <% end %>
-    </ul>
+    <% if @user.pending_landings.size > 0 %>
+      <%= render "pending" %>
+    <% end %>
+
+    <% if @user.confirmed_landings.size > 0 %>
+      <%= render "confirmed" %>
+    <% end %>
+
+    <% if @user.available_landings.size > 0 %>
+      <%= render "available" %>
+    <% end %>
+
+    <% if @user.requested_landings.size > 0 %>
+      <%= render "requested" %>
+    <% end %>
   </div>
 
   <div class="col-md-6">
-    <h3>Make a New Destination</h3>
+    <h3>Add a New Destination</h3>
     <%= form_for @destination, :html => {:role=>"form"} do |f| %>
       <%= f.hidden_field :user_id, :value => @user.id %><br>
 
@@ -50,9 +45,40 @@
         <%= f.label :address %>
         <%= f.text_field :address %>
       </div>
+
+      <div class="dropdown form-group">
+        <select id="borough-selection" class="btn">
+          <option value="hasnt-been-chosen">Select the borough for your destination</option>
+          <option value="Manhattan">Manhattan</option>
+          <option value="Brooklyn">Brooklyn</option>
+          <option value="Queens">Queens</option>
+        </select>
+      </div>
+
+      <div class="neighborhood-dropdown dropdown form-group" id="manhattan-dropdown">
+        <%= f.collection_select :id, @destination.manhattan_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
+      </div>
+
+      <div class="neighborhood-dropdown dropdown form-group" id="brooklyn-dropdown">
+        <%= f.collection_select :id, @destination.brooklyn_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
+      </div>
+
+      <div class="neighborhood-dropdown dropdown form-group" id="queens-dropdown">
+        <%= f.collection_select :id, @destination.queens_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
+      </div>
       
       <%= f.submit "Make destination", {:class=> "btn btn-primary"} %>
     <% end %>
   </div>
+</div>
 
+<div class="row">
+  <div class="col-md-6">
+    <h3>Destinations</h3>
+    <ul>
+      <% @user.destinations.each do |destination| %>
+        <li><%= destination.name %>: <%= destination.address %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
