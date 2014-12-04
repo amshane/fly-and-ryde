@@ -11,8 +11,13 @@
     <% @landing.matches.each do |match| %>
       <p>
         Name: <%= match.user.first_name %><br>
-        Arrival Time: <%= match.arrival_time.strftime("%I:%M %p") %>
-        Wait Time: <%= @landing.get_wait_time(match) %>
+        Arrival Time: <%= match.arrival_time.strftime("%I:%M %p") %><br>
+        <% if @landing.arrival_time < match.arrival_time %>
+          Your Expected Wait Time Is: <%= @landing.get_wait_time(match) %><br>
+        <% else %>
+          Your Match Will Land <%= @landing.get_wait_time(match) %> Before You<br>
+        <%end%>
+        <%= match.user.first_name %> is also going to <%= match.destination.borough %>
         <%= form_for @ride do |f| %>
           <%= f.hidden_field :user_id, :value => @user.id %>
           <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
