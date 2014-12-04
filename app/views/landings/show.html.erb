@@ -12,6 +12,7 @@
       <p>
         Name: <%= match.user.first_name %><br>
         Arrival Time: <%= match.arrival_time.strftime("%I:%M %p") %>
+        Wait Time: <%= @landing.get_wait_time(match) %>
         <%= form_for @ride do |f| %>
           <%= f.hidden_field :user_id, :value => @user.id %>
           <%= f.hidden_field :requester_landing_id, :value => @landing.id %>

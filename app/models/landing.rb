@@ -22,6 +22,18 @@ class Landing < ActiveRecord::Base
     hours <= 3
   end
 
+  def get_wait_time(match)
+    time_difference = (self.arrival_time - match.arrival_time).abs
+    minutes = (time_difference/60.0).to_i
+    hours = (minutes/60).to_i
+    remaining_minutes = (minutes % 60).to_i
+    if minutes < 60 
+      "#{minutes} minutes"
+    else 
+      "#{hours} hours and #{remaining_minutes} minutes"
+    end
+  end
+
   def get_pending_match
     Landing.where(:ride_id => self.ride_id, :status => "requested").where.not(:id => self.id)[0]
   end
