@@ -4,6 +4,7 @@ class SeedDatabase
   AIRPORTS = [["John F. Kennedy International Airport", "JFK"],["Newark Liberty International Airport", "EWR"],["LaGuardia Airport","LGA"]]
   STREET_NAMES = ["Abbey Rd.","Abbey Rd.","Broadway","Castro St.","Downing St.","Easy St.","Elm St.","Henry St.","High St.", "Lime St.","Ledo Rd.","Madison Ave.","Market Street","National Road","Ocean Dr."]
   AIRLINES = ["Delta", "Spirit","JetBlue","American","Frontier","Virgin","Oceanic","PanAm","Southwest"]
+  BOROUGHS = ["Manhattan","Brooklyn","Queens"]
 
   def initialize
     make_airports
@@ -41,7 +42,8 @@ class SeedDatabase
         :address => "#{number} #{STREET_NAMES.sample}, New York, NY #{zip_code}",
         :lat =>  rand(40.7100..40.7127),
         :long => rand(74.0040..74.0060),
-        :user_id => user.id
+        :user_id => user.id,
+        :borough => "#{BOROUGHS.sample}"
       )
     end
   end
@@ -86,7 +88,8 @@ class SeedDatabase
       :address => "129 Gates Ave, Brooklyn, NY 11238",
       :lat => 40.685007,
       :long => -73.962943,
-      :user_id => user.id
+      :user_id => user.id,
+      :borough => "Brooklyn"
     )
   end
 

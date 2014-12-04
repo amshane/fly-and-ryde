@@ -9,7 +9,7 @@ class Landing < ActiveRecord::Base
     matches_array = []
     landings = Landing.where(:status => "available")
     landings.each do |l|
-      if self.airport_id == l.airport_id && self.arrival_date == l.arrival_date && self.user_id != l.user_id && time_difference(l)
+      if self.airport_id == l.airport_id && self.arrival_date == l.arrival_date && self.user_id != l.user_id && time_difference(l) && self.destination.borough == l.destination.borough
         matches_array << l
       end
     end
