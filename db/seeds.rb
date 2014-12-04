@@ -54,7 +54,7 @@ class SeedDatabase
       day = rand(0..7)
       hour = rand(1..12)
       arrival_time = Time.now
-      arrival_date = Date.new(2014,12,day)
+      arrival_date = Date.today
       create_landing(user, arrival_time, arrival_date)
     end
   end
@@ -99,7 +99,7 @@ class SeedDatabase
       :user_id => user.id,
       :destination_id => user.destinations.last.id,
       :complete => true,
-      :arrival_date => Date.new(2014,12,17),
+      :arrival_date => Date.today,
       :arrival_time => Time.now,
       :ride_id => ride.id,
       :airline => AIRLINES.sample,
