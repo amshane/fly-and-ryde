@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12 center-container">
+    <div class="in-line-container">
+      <h3>Edit This Destination</h3>
+      <%= form_for @destination, :html => {:role=>"form"} do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => "form-control" %>
+  
+        <%= f.label :address %>
+        <%= f.text_field :address,:class => "form-control" %>
+        
+        <%= f.submit "Edit Destination", {:class=> "btn btn-primary"} %>
+      <% end %>
+    </div>
+  </div>
+</div>

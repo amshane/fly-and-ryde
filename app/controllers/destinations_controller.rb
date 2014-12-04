@@ -10,6 +10,26 @@ class DestinationsController < ApplicationController
     end
   end
 
+  def edit
+    @destination = Destination.find(params[:id])
+  end
+
+  def update
+    @destination = Destination.find(params[:id])
+    if @destination.update(destination_params) 
+      redirect_to user_path(@destination.user)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @destination = Destination.find(params[:id])
+    @user = @destination.user
+    @destination.destroy
+    redirect_to user_path(@user)
+  end
+
   private
 
     def destination_params
