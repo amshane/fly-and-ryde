@@ -12,13 +12,13 @@ $(function(){
         }
     });
 
-    $('.neighborhood-dropdown').change(function(event){
-        var neighborhoodID = $(this).find("select").val();
-        if(neighborhoodID == "") {
-            $('.see-buzz').addClass("disabled");
-        } else {
-            $('.see-buzz').removeClass("disabled");
-        }
-    });
+    // $('.neighborhood-dropdown').change(function(event){
+    //     var neighborhoodID = $(this).find("select").val();
+    //     if(neighborhoodID == "") {
+    //         $('.see-buzz').addClass("disabled");
+    //     } else {
+    //         $('.see-buzz').removeClass("disabled");
+    //     }
+    // });
 
 });

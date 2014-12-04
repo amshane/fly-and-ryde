@@ -9,7 +9,7 @@ class DestinationsController < ApplicationController
   private
 
     def destination_params
-      params.require(:destination).permit(:name, :address, :lat, :long, :user_id)
+      params.require(:destination).permit(:name, :address, :lat, :long, :user_id, :area_id, :neighborhood, :borough)
     end
 
 end

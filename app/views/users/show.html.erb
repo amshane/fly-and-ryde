@@ -56,15 +56,15 @@
       </div>
 
       <div class="neighborhood-dropdown dropdown form-group" id="manhattan-dropdown">
-        <%= f.collection_select :id, @destination.manhattan_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
+        <%= f.collection_select :area_id, @destination.manhattan_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
       </div>
 
       <div class="neighborhood-dropdown dropdown form-group" id="brooklyn-dropdown">
-        <%= f.collection_select :id, @destination.brooklyn_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
+        <%= f.collection_select :area_id, @destination.brooklyn_neighborhoods,:id,:destinations, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
       </div>
 
       <div class="neighborhood-dropdown dropdown form-group" id="queens-dropdown">
-        <%= f.collection_select :id, @destination.queens_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
+        <%= f.collection_select :area_id, @destination.queens_neighborhoods,:id,:neighborhood, {:prompt => "Select the neighborhood for your destination"}, :class => "btn" %>
       </div>
       
       <%= f.submit "Make destination", {:class=> "btn btn-primary"} %>
