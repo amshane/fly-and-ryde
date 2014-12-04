@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate_user, :only => [:show, :edit]
+
   def index
     @users = User.all
   end
@@ -38,5 +41,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :phone_number)
+  end
+
+  def authenticate_user 
+    redirect_to root_url unless current_user.id.to_s == params[:id] 
   end
 end
