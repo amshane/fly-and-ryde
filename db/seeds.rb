@@ -1,6 +1,6 @@
 class SeedDatabase
   
-  USERS = [["Katie", "Hoffman", "7202327272"], ["Harold", "Cooper", "3038956008"], ["Ayanthika", "Motha", "2125657878"], ["Julia", "Zhang", "7804342323"], ["Sam", "Marcus", "3035556767"], ["Allison", "Shane", "4846669001"]]
+  USERS = [["Katie", "Hoffman", "7202327272"], ["Harold", "Cooper", "3038956008"]]
   AIRPORTS = [["John F. Kennedy International Airport", "JFK"],["Newark Liberty International Airport", "EWR"],["LaGuardia Airport","LGA"]]
   STREET_NAMES = ["Abbey Rd.","Abbey Rd.","Broadway","Castro St.","Downing St.","Easy St.","Elm St.","Henry St.","High St.", "Lime St.","Ledo Rd.","Madison Ave.","Market Street","National Road","Ocean Dr."]
   AIRLINES = ["Delta", "Spirit","JetBlue","American","Frontier","Virgin","Oceanic","PanAm","Southwest"]
@@ -43,7 +43,7 @@ class SeedDatabase
         :address => ADDRESSES.sample,
         :user_id => user.id
       )
-      sleep(2)
+      sleep(5)
     end
   end
 
@@ -87,6 +87,7 @@ class SeedDatabase
       :address => "129 Gates Ave, Brooklyn, NY 11238",
       :user_id => user.id
     )
+    sleep(5)
   end
 
   def make_common_landing(user, ride, arrival_time)
