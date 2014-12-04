@@ -37,7 +37,7 @@ class LandingsController < ApplicationController
   private
 
   def landing_params
-    params.require(:landing).permit(:airport_id, :user_id, :destination_id, :ride_id, :arrival_time, :complete, :airline, :flight_num, :arrival_date)
+    params.require(:landing).permit(:airport_id, :user_id, :destination_id, :ride_id, :arrival_time, :complete, :airline, :flight_num, :arrival_date, :borough)
   end
 
   def status_params
