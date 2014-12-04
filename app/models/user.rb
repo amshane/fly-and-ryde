@@ -20,4 +20,22 @@ class User < ActiveRecord::Base
     Landing.where(:status => "pending", :user_id => self.id)
   end
 
+  def confirmed_landings
+    Landing.where(:status => "complete", :user_id => self.id)
+  end
+
+  def available_landings
+    Landing.where(:status => "available", :user_id => self.id)
+  end
+
+  def requested_landings
+    Landing.where(:status => "requested", :user_id => self.id)
+  end
+
+  def valid_phone_number(phone_number)
+    regex = /(?:\+?|\b)[0-9]{10}\b/
+    r = regex.match(phone_number)
+    r != nil
+  end
+
 end

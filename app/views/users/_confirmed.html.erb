@@ -1,0 +1,15 @@
+<h3>Confirmed Ride-Shares!</h3>
+<ul>
+  <% @user.confirmed_landings.each do |confirmed_landing| %>
+    <li>Your trip details:
+      <%= confirmed_landing.airport.abbreviation %> -
+      <%= confirmed_landing.arrival_date.strftime("%b %d, %Y") %> -
+      <%= confirmed_landing.arrival_time.strftime("%I:%M %p") %>
+    </li>
+    <ul>
+      <li>
+        <%= link_to "View ride confirmation page", ride_path(confirmed_landing.ride) %>
+      </li>
+    </ul>
+  <% end %> 
+</ul> 

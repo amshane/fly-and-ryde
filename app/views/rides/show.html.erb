@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>Carpool Page</h1>
+  <h1>Carpool Confirmation Page</h1>
 </div>
 
 <div class="row">
@@ -16,3 +16,11 @@
     </div>
   <% end %>
 </div>
+
+
+
+<% if current_user %>
+  <div class="row">
+    <%= link_to "Back to your profile", user_path(current_user) %>
+  </div>
+<% end %>

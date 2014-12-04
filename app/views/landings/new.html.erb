@@ -40,7 +40,6 @@
     <%= f.collection_select :destination_id, @user.destinations, :id, :name, {:prompt => "Select your destination"} %><br>
 
     <%= link_to "Make a new destination", user_path(@user) %><br>
-
     <%= f.submit "Submit flight", :class => "btn btn-primary" %>
   <% end %>
 </div>
