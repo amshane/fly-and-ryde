@@ -43,6 +43,7 @@ class SeedDatabase
         :address => ADDRESSES.sample,
         :user_id => user.id
       )
+      sleep(2)
     end
   end
 
