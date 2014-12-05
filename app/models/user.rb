@@ -33,9 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def valid_phone_number(phone_number)
-    regex = /(?:\+?|\b)[0-9]{10}\b/
-    r = regex.match(phone_number)
-    r != nil
+    phone_number !~ /\D/ && phone_number.length == 10
   end
 
 end
