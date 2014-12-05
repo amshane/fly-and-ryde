@@ -1,6 +1,6 @@
 class LandingsController < ApplicationController
 
-  before_action :authenticate_user, :only => [:show]
+  # before_action :authenticate_user, :only => [:show]
 
   def new
     @landing = Landing.new
@@ -46,8 +46,8 @@ class LandingsController < ApplicationController
     params.require(:landing).permit(:status)
   end
 
-  def authenticate_user
-    redirect_to root_url unless Landing.find(params[:id]).user_id == current_user.id.to_s
-  end
+  # def authenticate_user
+  #   redirect_to root_url unless Landing.find(params[:id]).user_id == current_user.id.to_s
+  # end
 
 end
