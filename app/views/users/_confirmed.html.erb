@@ -10,6 +10,9 @@
       <li>
         <%= link_to "View ride confirmation page", ride_path(confirmed_landing.ride) %>
       </li>
+      <li>
+        <%= link_to "Cancel rideshare", user_landing_path(@user, confirmed_landing), method: :delete, data: {:confirm => "Are you sure you want to cancel this rideshare?"} %>
+      </li>
     </ul>
-  <% end %> 
-</ul> 
+  <% end %>
+</ul>

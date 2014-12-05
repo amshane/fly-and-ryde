@@ -52,16 +52,21 @@ class LandingsController < ApplicationController
     end
   end
 
+  # @user_lost_match = User.find(params[:id])
+
+
+
   def destroy
     @landing = Landing.find(params[:id])
     @user = @landing.user
     if @landing.get_pending_match
       @landing.get_pending_match.update(:status => "available")
       @landing.ride.destroy
+    elsif @landing.get_confirmed_match
+      @landing.get_confirmed_match.update(:status => "available", :cancelled => true)
+      @landing.ride.destroy
     end
-    @confirmed_match = @landing.get_confirmed_match
     @landing.destroy
-    @confirmed_match.update(:status => "available")
     redirect_to user_path(@user)
   end
 

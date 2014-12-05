@@ -1,6 +1,9 @@
 <h3>Your Upcoming Trips</h3>
 <ul>
   <% @user.available_landings.each do |l| %>
+    <% if l.cancelled == true %>
+      <h5>Your confirmed reservation was cancelled, sorry. Please find a new match.</h5>
+    <% end %>
     <li>Your trip details:
       <%= l.airport.abbreviation %> -
       <%= l.arrival_date.strftime("%b %d, %Y") %> -
@@ -14,5 +17,5 @@
         <%= link_to "Find Buddy", user_landing_path(@user,l) %>
       </li>
     </ul>
-  <% end %> 
-</ul> 
+  <% end %>
+</ul>

@@ -27,9 +27,9 @@ class Landing < ActiveRecord::Base
     minutes = (time_difference/60.0).to_i
     hours = (minutes/60).to_i
     remaining_minutes = (minutes % 60).to_i
-    if minutes < 60 
+    if minutes < 60
       "#{minutes} minutes"
-    else 
+    else
       "#{hours} hours and #{remaining_minutes} minutes"
     end
   end
