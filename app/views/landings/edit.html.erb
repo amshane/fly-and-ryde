@@ -1,0 +1,29 @@
+<div class="row">
+  <h1>Edit your flight info</h1>
+</div>
+
+<div class="row">
+  <%= form_for([@user, @landing]) do |f| %>
+    
+    <%= f.label :airport_id, "Airport" %>
+    <%= f.collection_select :airport_id, Airport.all, :id, :name, {:prompt => "Select your airport"} %><br>
+
+    <%= f.label :airline, "Airline" %>
+    <%= f.text_field :airline %><br>
+
+    <%= f.label :flight_num, "Flight Number" %>
+    <%= f.text_field :flight_num %><br>
+
+    <%= f.label :arrival_date, "Arrival Date" %>
+    <%= f.date_field :arrival_date %><br>
+
+    <%= f.label :arrival_time, "Arrival Time" %>
+    <%= f.time_field :arrival_time %><br>
+
+    <%= f.label :destination_id, "Destination" %>
+    <%= f.collection_select :destination_id, @user.destinations, :id, :name, {:prompt => "Select your destination"} %><br>
+
+    <%= link_to "Make a new destination", user_path(@user) %><br>
+    <%= f.submit "Edit flight", :class => "btn btn-primary" %>
+  <% end %>
+</div>

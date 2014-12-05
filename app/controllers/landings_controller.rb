@@ -1,6 +1,6 @@
 class LandingsController < ApplicationController
 
-  before_action :authenticate_user, :only => [:show]
+  #before_action :authenticate_user, :only => [:show]
 
   def new
     @landing = Landing.new
@@ -24,7 +24,7 @@ class LandingsController < ApplicationController
     end
   end
 
-  def update
+  def update_status
     @landing = Landing.find(params[:id])
     if @landing.update(status_params)
       if @landing.status == "available"
@@ -36,6 +36,35 @@ class LandingsController < ApplicationController
       end
     end
   end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @landing = Landing.find(params[:id])
+  end
+
+  def update
+    @landing = Landing.find(params[:id])
+    @user = @landing.user
+    if @landing.update(landing_params)
+      redirect_to user_landing_path(@user, @landing)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @landing = Landing.find(params[:id])
+    @user = @landing.user
+    if @landing.get_pending_match
+      @landing.get_pending_match.update(:status => "available")
+      @landing.ride.destroy
+    end
+    @confirmed_match = @landing.get_confirmed_match
+    @landing.destroy
+    @confirmed_match.update(:status => "available")
+    redirect_to user_path(@user)
+  end
+
   private
 
   def landing_params

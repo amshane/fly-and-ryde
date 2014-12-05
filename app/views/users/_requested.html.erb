@@ -10,6 +10,9 @@
       <li>
         <%= l.get_acceptor.first_name %> has not responded to your request yet.
       </li>
+      <li>
+        <%= link_to "Cancel this flight", user_landing_path(@user, l), method: :delete, data: {:confirm => "Are you sure you want to cancel this landing?"} %>
+      </li>
     </ul>
   <% end %> 
 </ul> 

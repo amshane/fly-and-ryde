@@ -3,28 +3,37 @@
   <p>Your trip details:
     <%= @landing.airport.abbreviation %> -
     <%= @landing.arrival_date.strftime("%b %d, %Y") %> -
-    <%= @landing.arrival_time.strftime("%I:%M %p") %>
+    <%= @landing.arrival_time.strftime("%I:%M %p") %><br>
+    
+    <% if @landing.status != "confirmed" %>
+      <%= link_to "Edit your flight information", edit_user_landing_path(@landing.user,@landing) %>
+    <% else %>
+      <%= link_to "See your ride buddy!", ride_path(@landing.ride) %>
+    <% end %>
   </p>
-  <% if @landing.matches.size < 1 %>
-    <h4>No one else is traveling around this time, please try again later!</h4>
-  <% else %>
-    <% @landing.matches.each do |match| %>
-      <p>
-        Name: <%= match.user.first_name %><br>
-        Arrival Time: <%= match.arrival_time.strftime("%I:%M %p") %><br>
-        <% if @landing.arrival_time < match.arrival_time %>
-          Your Expected Wait Time Is: <%= @landing.get_wait_time(match) %><br>
-        <% else %>
-          <%= match.user.first_name %> Will Land <%= @landing.get_wait_time(match) %> Before You<br>
-        <%end%>
-        <%= match.user.first_name %>'s destination is <%= match.destination.neighborhood %>, which is also in <%= match.destination.borough %>!
-        <%= form_for @ride do |f| %>
-          <%= f.hidden_field :user_id, :value => @user.id %>
-          <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
-          <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
-          <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
-        <% end %>
-      </p>
+  <br>
+  <% if @landing.status == "available" %>
+    <% if @landing.matches.size < 1 %>
+      <h4>No one else is traveling around this time, please try again later!</h4>
+    <% else %>
+      <% @landing.matches.each do |match| %>
+        <p>
+          Name: <%= match.user.first_name %><br>
+          Arrival Time: <%= match.arrival_time.strftime("%I:%M %p") %><br>
+          <% if @landing.arrival_time < match.arrival_time %>
+            Your Expected Wait Time Is: <%= @landing.get_wait_time(match) %><br>
+          <% else %>
+            <%= match.user.first_name %> Will Land <%= @landing.get_wait_time(match) %> Before You<br>
+          <%end%>
+          <%= match.user.first_name %>'s destination is <%= match.destination.neighborhood %>, which is also in <%= match.destination.borough %>!
+          <%= form_for @ride do |f| %>
+            <%= f.hidden_field :user_id, :value => @user.id %>
+            <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
+            <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
+            <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
+          <% end %>
+        </p>
+      <% end %>
     <% end %>
   <% end %>
 

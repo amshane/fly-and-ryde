@@ -42,4 +42,8 @@ class Landing < ActiveRecord::Base
     Landing.where(:status => "pending", :ride_id => self.ride_id).where.not(:user_id => self.user_id)[0].user
   end
 
+  def get_confirmed_match
+    Landing.where(:ride_id => self.ride_id, :status => "complete").where.not(:id => self.id)[0]
+  end
+
 end

@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
 
-  before_action :authenticate_user, :only => [:show]
+  #before_action :authenticate_user, :only => [:show]
 
   def create
     @user = User.find(params[:ride][:user_id])
