@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'sessions#failure'
   get '/privacy_policy' => 'static_pages#privacy_policy'
 
+
   resources :users do
     resources :landings
   end
