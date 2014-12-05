@@ -48,7 +48,6 @@ class LandingsController < ApplicationController
 
   def authenticate_user
     redirect_to root_url unless current_user.id.to_s == params[:user_id]
-    #Landing.find(params[:id]).user.include?(current_user)
   end
 
 end
