@@ -140,7 +140,8 @@ hr{
 /* Basic CSS ends */
 
 .container{
-	width:900px;
+	width: 900px;
+	length: 2000px;
 }
 
 .tblue{
@@ -149,9 +150,9 @@ hr{
 
 
 .top{
-	background:#555 url('../img/back.jpg') no-repeat;
-	background-size:cover;
-	background-position:center center;
+	background:#555 url('/assets/back.jpg') repeat;
+	background-size: cover;
+	background-position:center;
 	border-bottom:1px solid #000;
 }
 
@@ -937,7 +938,7 @@ header .navigation a:hover{
 /* Features */
 
 .features{
-	background:#eee url('../img/featureback1.png') repeat;
+	background:#eee url('/assets/featureback1.png') repeat;
 	border-bottom:1px solid #ddd;
 }
 
@@ -1455,7 +1456,7 @@ div.ppt {
 
 footer{
 	padding-top:30px;
-	background:#000 url('../img/3.png') repeat;
+	background:#000 url('/assets/3.png') repeat;
 	color:#ccc;
 }
 
