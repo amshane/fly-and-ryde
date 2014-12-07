@@ -16,11 +16,10 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:requester_landing_id, :acceptor_landing_id, :user_id)
+    params.require(:ride).permit(:requester_landing_id, :acceptor_landing_id, :user_id, :destination_id)
   end
 
   def authenticate_user
     redirect_to root_url unless Ride.find(params[:id]).users.include?(current_user)
   end
-
 end

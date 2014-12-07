@@ -73,3 +73,5 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem "figaro"
 
 gem 'validates_formatting_of'
+
+gem 'uber-ruby', require: 'uber'

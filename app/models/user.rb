@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
     phone_number !~ /\D/ && phone_number.length == 10
   end
 
+  # def phone_number_format
+  #   (/\A\d{3}-\d{3}-\d{4}\z/.match(phone_number)).to_s
+  # end
+
 end

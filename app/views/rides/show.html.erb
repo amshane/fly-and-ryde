@@ -1,26 +1,50 @@
 <div class="row">
-  <h1>Carpool Confirmation Page</h1>
+  <h1>Ride-Share Confirmation Page</h1>
 </div>
 
 <div class="row">
-  <h3>Riders</h3>
+  <h3>Matched Ride Buddies</h3>
   <% @ride.landings.each do |landing| %>
-    <div class="col-md-4">
-      <h4><%= landing.user.first_name %></h4>
-      <ul>
-        <li><strong>Phone Number:</strong> <a href="tel:<%= number_to_phone(landing.user.phone_number) %>">Call Or Text <%= landing.user.first_name %>!</a></li>
-        <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
-        <li><strong>Airline:</strong> <%= landing.airline %></li>
-        <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
-      </ul>
-    </div>
+    <% if current_user == landing.user %>
+      <div class="col-md-4 pull-left">
+        <h4>Your Flight Details:</h4>
+        <ul>
+          <li><strong>Arrival Airport:</strong> <%= landing.airport.abbreviation %></li>
+          <li><strong>Airline:</strong> <%= landing.airline %></li>
+          <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
+          <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
+        </ul>
+        <% if landing.arrival_time < landing.get_confirmed_match.arrival_time && landing.user == current_user %>
+          <a href="https://m.uber.com/sign-up?client_id=<%= ENV["UBER_CLIENT_ID"] %>&first_name=<%= landing.user.first_name %>&last_name=<%= landing.user.last_name %>&country_code=us&mobile_country_code=%2B1&mobile_phone=<%= landing.user.phone_number %>&product_id=b8e5c464-5de2-4539-a35a-986d6e58f186&pickup_latitude=<%= landing.airport.latitude %>&pickup_longitude=<%= landing.airport.longitude %>&pickup_nickname=<%= landing.airport.abbreviation %>&dropoff_latitude=<%= landing.destination.lat %>&dropoff_longitude=<%= landing.destination.long %>&dropoff_nickname=<%= landing.destination.name.gsub(" ", "%20") %>&dropoff_address=<%= landing.destination.address.gsub(" ", "%20") %>">At Airport Arrival - Get Your Uber Ride Here!</a>
+        <% else %>
+          You're Buddy is arriving at the airport first, they will get the Uber ride, contact them when you land!
+        <% end %>       
+      </div>
+
+    <% else %>
+      <div class="col-md-4">
+        <h4><%= landing.user.first_name %>'s Flight Details</h4>
+        <ul>
+          <li><strong>Arrival Airport:</strong> <%= landing.airport.abbreviation %></li>
+          <li><strong>Airline:</strong> <%= landing.airline %></li>
+          <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
+          <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
-
+<br>
 
 <% if current_user %>
   <div class="row">
-    <%= link_to "Back to your profile", user_path(current_user) %>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <%= link_to "Back to your profile", user_path(current_user) %>
+    </div>
   </div>
 <% end %>
+
+
+
