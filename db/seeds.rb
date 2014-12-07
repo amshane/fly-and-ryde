@@ -12,21 +12,21 @@ class SeedDatabase
 
   def initialize
     make_airports
-    make_users_and_destinations
-    make_landings
-    make_common_ride
+    # make_users_and_destinations
+    # make_landings
+    # make_common_ride
   end
 
-  def make_users_and_destinations
-    USERS.each do |u| 
-      u = User.create!(
-        :first_name => u[0], 
-        :last_name => u[1], 
-        :phone_number => u[2]
-      )
-      make_destinations(u)
-    end
-  end
+  # def make_users_and_destinations
+  #   USERS.each do |u| 
+  #     u = User.create!(
+  #       :first_name => u[0], 
+  #       :last_name => u[1], 
+  #       :phone_number => u[2]
+  #     )
+  #     make_destinations(u)
+  #   end
+  # end
 
   def make_airports
     AIRPORTS.each do |a|
@@ -39,74 +39,74 @@ class SeedDatabase
     end
   end
 
-  def make_destinations(user)
-    ["Home", "Work"].each do |n|
-      number = rand(15..1700).to_s
-      zip_code = rand(10001..11692).to_s
-      Destination.create!(
-        :name => n,
-        :address => ADDRESSES.sample,
-        :user_id => user.id
-      )
-    end
-  end
+  # def make_destinations(user)
+  #   ["Home", "Work"].each do |n|
+  #     number = rand(15..1700).to_s
+  #     zip_code = rand(10001..11692).to_s
+  #     Destination.create!(
+  #       :name => n,
+  #       :address => ADDRESSES.sample,
+  #       :user_id => user.id
+  #     )
+  #   end
+  # end
 
-  def make_landings
-    [3,4,5,6].each do |id|
-      user = User.find(id)
-      hour = rand(1..12)
-      min = rand(0..59)
-      arrival_date = Date.today - rand(0..7)
-      arrival_time = arrival_date.to_datetime.change(hour:hour, min:min)
-      create_landing(user, arrival_time, arrival_date)
-    end
-  end
+  # def make_landings
+  #   [3,4,5,6].each do |id|
+  #     user = User.find(id)
+  #     hour = rand(1..12)
+  #     min = rand(0..59)
+  #     arrival_date = Date.today - rand(0..7)
+  #     arrival_time = arrival_date.to_datetime.change(hour:hour, min:min)
+  #     create_landing(user, arrival_time, arrival_date)
+  #   end
+  # end
 
-  def create_landing(user, arrival_time, arrival_date)
-    Landing.create!(
-      :airport_id => Airport.all.sample.id,
-      :user_id => user.id,
-      :destination_id => user.destinations.first.id,
-      :arrival_time => arrival_time,
-      :arrival_date => arrival_date,
-      :airline => AIRLINES.sample,
-      :flight_num => rand(10000...90000)
-    )
-  end
+  # def create_landing(user, arrival_time, arrival_date)
+  #   Landing.create!(
+  #     :airport_id => Airport.all.sample.id,
+  #     :user_id => user.id,
+  #     :destination_id => user.destinations.first.id,
+  #     :arrival_time => arrival_time,
+  #     :arrival_date => arrival_date,
+  #     :airline => AIRLINES.sample,
+  #     :flight_num => rand(10000...90000)
+  #   )
+  # end
 
-  def make_common_ride
-    harold = User.find_by(:first_name => "Harold")
-    katie = User.find_by(:first_name => "Katie")
-    arrival_time = (Date.today - 1).to_datetime.change(hour:14,min:15)
-    ride = Ride.create!(:driver_name => "Elle Woods", :price => 45.67, :uber_confirmation => "42384925885")
-    [harold, katie].each do |user|
-      make_common_destination(user)
-      make_common_landing(user, ride, arrival_time)
-    end
-  end
+  # def make_common_ride
+  #   harold = User.find_by(:first_name => "Harold")
+  #   katie = User.find_by(:first_name => "Katie")
+  #   arrival_time = (Date.today - 1).to_datetime.change(hour:14,min:15)
+  #   ride = Ride.create!(:driver_name => "Elle Woods", :price => 45.67, :uber_confirmation => "42384925885")
+  #   [harold, katie].each do |user|
+  #     make_common_destination(user)
+  #     make_common_landing(user, ride, arrival_time)
+  #   end
+  # end
 
-  def make_common_destination(user)
-    Destination.create!(
-      :name => "Locanda Vini & Olii",
-      :address => "129 Gates Ave, Brooklyn, NY 11238",
-      :user_id => user.id
-    )
-  end
+  # def make_common_destination(user)
+  #   Destination.create!(
+  #     :name => "Locanda Vini & Olii",
+  #     :address => "129 Gates Ave, Brooklyn, NY 11238",
+  #     :user_id => user.id
+  #   )
+  # end
 
-  def make_common_landing(user, ride, arrival_time)
-    Landing.create!(
-      :airport_id => Airport.find_by(:abbreviation => "JFK").id,
-      :user_id => user.id,
-      :destination_id => user.destinations.last.id,
-      :complete => true,
-      :arrival_date => Date.today - 1,
-      :arrival_time => arrival_time,
-      :ride_id => ride.id,
-      :airline => AIRLINES.sample,
-      :flight_num => rand(10000...90000),
-      :status => "complete"
-    )
-  end
+  # def make_common_landing(user, ride, arrival_time)
+  #   Landing.create!(
+  #     :airport_id => Airport.find_by(:abbreviation => "JFK").id,
+  #     :user_id => user.id,
+  #     :destination_id => user.destinations.last.id,
+  #     :complete => true,
+  #     :arrival_date => Date.today - 1,
+  #     :arrival_time => arrival_time,
+  #     :ride_id => ride.id,
+  #     :airline => AIRLINES.sample,
+  #     :flight_num => rand(10000...90000),
+  #     :status => "complete"
+  #   )
+  # end
 
 end
 
