@@ -23,6 +23,7 @@
         <%= form_for([@user, landing], :url => update_status_path(@user, landing), :html=>{:id=> "inline-form", :method => "patch"}) do |f| %>
           <%= f.hidden_field :status, :value => "available" %>
           <h3 style="padding-left: 10px;"><%= f.submit "Reject", :class => "btn btn-sm btn-danger page-text" %></h3>
+
         <% end %>
       </span>
     </div>

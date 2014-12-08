@@ -1,23 +1,38 @@
-<h2>Other Riders Arriving At <%= @landing.airport.name%></h2>
+  <div class="hero inner-page">
+    <div class="container">
+      <div class="intro">
+        <h2 style=>YOUR LANDING BOARD<span class="tblue">.</span></h2>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <p>Your trip details:
-    <%= @landing.airport.abbreviation %> -
+<div class="container" style="padding-top: 30px;">
+  <div class="row">
+    <div class="page-title">
+         <div class="col-md-12">
+
+<h2 class="welcome-user"><strong>Other Riders Arriving At <%= @landing.airport.name%></strong></h2>
+</div>
+<div class="col-md-6">
+  <h4 class="page-text">Your trip details:</h4>
+    <text class="page-text"><%= @landing.airport.abbreviation %> -
     <%= @landing.arrival_date.strftime("%b %d, %Y") %> -
-    <%= @landing.arrival_time.strftime("%I:%M %p") %><br>
+    <%= @landing.arrival_time.strftime("%I:%M %p") %></text><br>
     
     <% if @landing.status != "confirmed" %>
-      <%= link_to "Edit your flight information", edit_user_landing_path(@landing.user,@landing) %>
+      <%= link_to "Edit your flight information", edit_user_landing_path(@landing.user,@landing), :class => "page-text" %>
     <% else %>
-      <%= link_to "See your ride buddy!", ride_path(@landing.ride) %>
+      <%= link_to "See your ride buddy!", ride_path(@landing.ride), :class => "page-text" %>
     <% end %>
   </p>
   <br>
   <% if @landing.status == "available" %>
     <% if @landing.matches.size < 1 %>
-      <h4>No one else is traveling around this time, please try again later!</h4>
+      <h4 class="page-text">No one else is traveling around this time, please try again later!</h4><br>
     <% else %>
       <% @landing.matches.each do |match| %>
-        <p>
+        <text class="page-text">
           Name: <%= match.user.first_name %><br>
           Arrival Time: <%= match.arrival_time.strftime("%I:%M %p") %><br>
           <% if @landing.arrival_time < match.arrival_time %>
@@ -30,15 +45,19 @@
             <%= f.hidden_field :user_id, :value => @user.id %>
             <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
             <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
-            <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
+            <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary page-text" %>
           <% end %>
-        </p>
+        </text>
       <% end %>
     <% end %>
   <% end %>
 
 
-<%= link_to "Go back to your profile", user_path(@user) %>
+<%= link_to "Go back to your profile", user_path(@user), :class => "page-text" %>
+</div>
+</div>
+</div>
+</div>
 
 
 
