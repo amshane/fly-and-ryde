@@ -2,10 +2,15 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get '/auth/uber/callback' => 'sessions#create'
+
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout
+
   get '/auth/failure' => 'sessions#failure'
-  get '/privacy_policy' => 'static_pages#privacy_policy' 
+
+  get '/privacy_policy' => 'static_pages#privacy_policy', :as => :privacy
+  get '/about' => 'static_pages#about', :as => :about 
+  
   patch '/users/:user_id/landings/:id/update_status' => 'landings#update_status', :as => :update_status
 
   resources :users do
