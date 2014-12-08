@@ -204,9 +204,9 @@ hr{
 
 
 .top{
-  background:#555 url('/assets/nyc2.jpg');
+  background:#555 url('/assets/nyc4.JPG');
   background-size: cover;
-  background-position:center;
+  background-position:0% 57%;
   border-bottom:1px solid #000;
 }
 
@@ -217,7 +217,7 @@ hr{
 /* Header */
 
 header{
-  background-color:rgba(0,0,0,0.3);
+  background-color:rgba(0,0,0,0.4);
   height:80px;
   border-bottom:1px solid #000;
 }
@@ -410,6 +410,7 @@ header .navigation a:hover{
   background:#fff;
   border:1px solid #e2e2e2;
   padding:10px;
+  position: 10% 0%;
 }
 
 .about-us .about-one-img{
@@ -418,7 +419,7 @@ header .navigation a:hover{
 }
 
 .about-us .about-one-content{
-  margin-left:110px;
+  margin-left:0px;
 }
 
 .about-us .about-one-item h3{
