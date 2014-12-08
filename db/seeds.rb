@@ -2,8 +2,8 @@ class SeedDatabase
   
   USERS = [["Katie", "Hoffman", "7202327272"], ["Harold", "Cooper", "3038956008"], ["Ayanthika", "Motha", "2125657878"], ["Julia", "Zhang", "7804342323"], ["Sam", "Marcus", "3035556767"], ["Allison", "Shane", "4846669001"]]
   AIRPORTS = [
-    ["John F. Kennedy International Airport", "JFK", 40.6413111, -73.77813909999999],
-    ["Newark Liberty International Airport", "EWR", 40.6895314, -74.1744624],
+    ["JFK International Airport", "JFK", 40.6413111, -73.77813909999999],
+    ["Newark International Airport", "EWR", 40.6895314, -74.1744624],
     ["LaGuardia Airport","LGA", 40.7769271, -73.8739659]]
   STREET_NAMES = ["Abbey Rd.","Abbey Rd.","Broadway","Castro St.","Downing St.","Easy St.","Elm St.","Henry St.","High St.", "Lime St.","Ledo Rd.","Madison Ave.","Market Street","National Road","Ocean Dr."]
   AIRLINES = ["Delta", "Spirit","JetBlue","American","Frontier","Virgin","Oceanic","PanAm","Southwest"]

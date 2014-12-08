@@ -63,16 +63,16 @@
         <%= f.hidden_field :user_id, :value => @user.id %><br>
 
         <div class="form-group">
-          <%= f.label :name, :class => "page-text col-sm-2" %>
+          <%= f.label :name, :class => "ride-user-font col-sm-2" %>
           <div class="col-sm-4">
-            <%= f.text_field :name, :class => "page-text" %>
+            <%= f.text_field :name, :class => "ride-user-font" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :address, :class => "page-text col-sm-2" %>
+          <%= f.label :address, :class => "ride-user-font col-sm-2" %>
           <div class="col-sm-4">
-            <%= f.text_field :address, :class => "page-text" %>
+            <%= f.text_field :address, :class => "ride-user-font" %>
           </div>
         </div>
         <h3><%= f.submit "MAKE DESTINATION", {:class=> "btn btn-primary page-text"} %></h3>
