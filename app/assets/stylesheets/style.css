@@ -127,6 +127,12 @@ hr{
   margin-bottom:10px !important;
 }
 
+.page-text{
+ text-transform: uppercase; 
+ font-family: 'Open sans', sans-serif; 
+ font-weight: bold;
+}
+
 .other-headers{
   font-family: 'Lobster Two', cursive;
   font-size:30px;
