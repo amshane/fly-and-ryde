@@ -138,14 +138,34 @@ hr{
   text-transform: uppercase; 
   font-family: 'Open sans', sans-serif; 
   font-weight: bold;
+  font-size: 15px;
+  line-height: 1.2;
 }
 
 .other-headers{
-  font-family: 'Lobster Two', cursive;
-  color:#555;
+  /*font-family: 'Lobster Two', cursive;*/
+  text-transform: uppercase;
+  font-family: 'Open sans', sans-serif; 
+  color: grey;
   margin-top:0px !important;
   margin-bottom:10px !important;
+  font-size: 25px;
+}
+
+.ride-user-font {
+  color:#555;
+  font-size:16px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase; 
+  line-height: 1.2;
+}
+
+.link-text{
+  text-transform: uppercase; 
+  font-family: 'Open sans', sans-serif; 
   font-weight: bold;
+  font-size: 18px;
+  line-height: 1.2;
 }
 
 .page-title p{
@@ -159,6 +179,8 @@ hr{
   margin:0px auto;
   margin-bottom:50px;
 }
+
+
 
 /* block */
 
