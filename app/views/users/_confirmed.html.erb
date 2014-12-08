@@ -1,17 +1,17 @@
 <h2 class="other-headers">Confirmed Ride-Shares!</h2>
 <ul>
   <% @user.confirmed_landings.each do |confirmed_landing| %>
-    <li style="text-transform: uppercase; font-family: 'Open sans'; font-size: 15px; font-weight: bold;">Your trip details:
+    <li class="page-text">Your trip details:
       <%= confirmed_landing.airport.abbreviation %> -
       <%= confirmed_landing.arrival_date.strftime("%b %d, %Y") %> -
       <%= confirmed_landing.arrival_time.strftime("%I:%M %p") %>
     </li>
     <ul>
-      <li style="text-transform: uppercase; font-family: 'Open sans'; font-size: 15px; font-weight: bold;">
-        <%= link_to "View ride confirmation page", ride_path(confirmed_landing.ride) %>
+      <li class="page-text">
+        <%= link_to "View ride confirmation page", ride_path(confirmed_landing.ride), :class => "page-text" %>
       </li>
-      <li style="text-transform: uppercase; font-family: 'Open sans'; font-size: 15px; font-weight: bold;">
-        <%= link_to "Cancel rideshare", user_landing_path(@user, confirmed_landing), method: :delete, data: {:confirm => "Are you sure you want to cancel this rideshare?"} %>
+      <li class="page-text">
+        <%= link_to "Cancel rideshare", user_landing_path(@user, confirmed_landing), method: :delete, data: {:confirm => "Are you sure you want to cancel this rideshare?"}, :class => "page-text" %>
       </li>
     </ul>
   <% end %>
