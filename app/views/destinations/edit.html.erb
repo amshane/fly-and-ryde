@@ -1,16 +1,27 @@
-<div class="row">
-  <div class="col-md-12 center-container">
-    <div class="in-line-container">
-      <h3>Edit This Destination</h3>
-      <%= form_for @destination, :html => {:role=>"form"} do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name, :class => "form-control" %>
-  
-        <%= f.label :address %>
-        <%= f.text_field :address,:class => "form-control" %>
-        
-        <%= f.submit "Edit Destination", {:class=> "btn btn-primary"} %>
-      <% end %>
+<div class="container" style="padding-top: 30px;">
+  <div class="comment-form">
+    <div class="row">
+      <div class="col-md-12 center-container">
+        <div class="page-title text-center">
+          <h3 class="welcome-user">Edit This Destination</h3><br>
+          <%= form_for @destination, :html => {:class => "form-horizontal"} do |f| %>
+          <div class="form-group">
+            <%= f.label :name, :class => "col-sm-5 control-label page-text" %>
+            <div class="col-sm-3">
+            <%= f.text_field :name, :class => "form-control page-text" %><br>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :address, :class => "col-sm-5 control-label page-text" %>
+            <div class="col-sm-3">
+            <%= f.text_field :address,:class => "form-control page-text" %><br>
+            </div>
+          </div>
+            
+            <%= f.submit "Edit Destination", {:class=> "btn btn-primary page-text"} %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

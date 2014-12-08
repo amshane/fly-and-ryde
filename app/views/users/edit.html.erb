@@ -4,27 +4,27 @@
       <h3 class="welcome-user">Edit Your Profile</h3><br>
       <%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
         <div class="form-group">
-          <%= f.label :first_name, :class => "col-sm-3 control-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :first_name, :class => "form-control"%><br>
+          <%= f.label :first_name, :class => "col-sm-5 control-label page-text" %>
+          <div class="col-sm-3">
+            <%= f.text_field :first_name, :class => "form-control page-text"%><br>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :last_name, :class => "col-sm-3 control-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :last_name, :class => "form-control" %><br>
+          <%= f.label :last_name, :class => "col-sm-5 control-label page-text" %>
+          <div class="col-sm-3">
+            <%= f.text_field :last_name, :class => "form-control page-text" %><br>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :phone_number, "Phone number, only digits please!", :class => "col-sm-3 control-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :phone_number, {:class => "form-control", :placeholder => "5555555555"} %><br>
+          <%= f.label :phone_number, "Phone number, only digits please!", :class => "col-sm-5 control-label page-text" %>
+          <div class="col-sm-3">
+            <%= f.text_field :phone_number, {:class => "form-control page-text", :placeholder => "5555555555"} %><br>
           </div>
         </div>
 
-        <%= f.submit "Submit", :class => "btn btn-primary" %>
+        <%= f.submit "Submit", :class => "btn btn-primary page-text" %>
       <% end %>
     </div>
   </div>

@@ -1,10 +1,10 @@
 <div class="row">
-  <h1>Edit your flight info</h1>
+  <h1 class="welcome-user">Edit your flight info</h1><br>
 </div>
 
 <div class="row">
-  <%= form_for([@user, @landing]) do |f| %>
-    
+  <%= form_for ([@user,@landing]) do |f| %>
+
     <%= f.label :airport_id, "Airport" %>
     <%= f.collection_select :airport_id, Airport.all, :id, :name, {:prompt => "Select your airport"} %><br>
 
