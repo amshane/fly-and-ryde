@@ -16,9 +16,10 @@
         </ul>
         <% if landing.arrival_time < landing.get_confirmed_match.arrival_time && landing.user == current_user %>
           <a href="https://m.uber.com/sign-up?client_id=<%= ENV["UBER_CLIENT_ID"] %>&first_name=<%= landing.user.first_name %>&last_name=<%= landing.user.last_name %>&country_code=us&mobile_country_code=%2B1&mobile_phone=<%= landing.user.phone_number %>&product_id=b8e5c464-5de2-4539-a35a-986d6e58f186&pickup_latitude=<%= landing.airport.latitude %>&pickup_longitude=<%= landing.airport.longitude %>&pickup_nickname=<%= landing.airport.abbreviation %>&dropoff_latitude=<%= landing.destination.lat %>&dropoff_longitude=<%= landing.destination.long %>&dropoff_nickname=<%= landing.destination.name.gsub(" ", "%20") %>&dropoff_address=<%= landing.destination.address.gsub(" ", "%20") %>%20NY">At Airport Arrival - Get Your Uber Ride Here!</a>
+          If you request an UberX right now, your estimated pickup wait is <%= @ride.x_time_estimate %> minutes.
         <% else %>
-          You're Buddy is arriving at the airport first, they will get the Uber ride, contact them when you land!
-        <% end %>       
+          Your Buddy is arriving at the airport first, they will get the Uber ride, contact them when you land!
+        <% end %>
       </div>
 
     <% else %>
@@ -32,7 +33,14 @@
         </ul>
       </div>
     <% end %>
+
   <% end %>
+  <% if @ride.surge >1.0 %>
+    Uber is experiencing unusually high demand and your cost will have a surge of <%= @ride.surge %>.
+    Your estimated cost already reflects the current surge.
+  <% end %>
+  Your estimated split cost will be $<%= @ride.split_estimate %>.
+  You're saving $<%= (@ride.x_price_estimate)-@ride.split_estimate %>.
 </div>
 <br>
 
