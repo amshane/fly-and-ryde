@@ -1,38 +1,45 @@
-<div class="row">
-  <h1>Ride-Share Confirmation Page</h1>
+  <div class="hero inner-page">
+    <div class="container">
+      <div class="intro">
+      <h2>RIDE-SHARE CONFIRMATION PAGE<span class="tblue">.</span></h2>
+      </div>
+    </div>
+  </div>
 </div>
-
+<div class="container" style="padding-top: 30px;">
 <div class="row">
-  <h3>Matched Ride Buddies</h3>
-  <% @ride.landings.each do |landing| %>
-    <% if current_user == landing.user %>
-      <div class="col-md-4 pull-left">
-        <h4>Your Flight Details:</h4>
-        <ul>
-          <li><strong>Arrival Airport:</strong> <%= landing.airport.abbreviation %></li>
-          <li><strong>Airline:</strong> <%= landing.airline %></li>
-          <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
-          <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
-        </ul>
-        <% if landing.arrival_time < landing.get_confirmed_match.arrival_time && landing.user == current_user %>
-          <a href="https://m.uber.com/sign-up?client_id=<%= ENV["UBER_CLIENT_ID"] %>&first_name=<%= landing.user.first_name %>&last_name=<%= landing.user.last_name %>&country_code=us&mobile_country_code=%2B1&mobile_phone=<%= landing.user.phone_number %>&product_id=b8e5c464-5de2-4539-a35a-986d6e58f186&pickup_latitude=<%= landing.airport.latitude %>&pickup_longitude=<%= landing.airport.longitude %>&pickup_nickname=<%= landing.airport.abbreviation %>&dropoff_latitude=<%= landing.destination.lat %>&dropoff_longitude=<%= landing.destination.long %>&dropoff_nickname=<%= landing.destination.name.gsub(" ", "%20") %>&dropoff_address=<%= landing.destination.address.gsub(" ", "%20") %>%20NY">At Airport Arrival - Get Your Uber Ride Here!</a>
-        <% else %>
-          You're Buddy is arriving at the airport first, they will get the Uber ride, contact them when you land!
-        <% end %>       
-      </div>
+  <div class="page-title">
+    <h3 class="welcome-user"> <strong>Matched Ride Buddies</strong></h3>
+    <% @ride.landings.each do |landing| %>
+      <% if current_user == landing.user %>
+        <div class="col-md-6 pull-left">
+          <h4>Your Flight Details:</h4>
+          <ul>
+            <li><strong>Arrival Airport:</strong> <%= landing.airport.abbreviation %></li>
+            <li><strong>Airline:</strong> <%= landing.airline %></li>
+            <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
+            <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
+          </ul>
+          <% if landing.arrival_time < landing.get_confirmed_match.arrival_time && landing.user == current_user %>
+            <a href="https://m.uber.com/sign-up?client_id=<%= ENV["UBER_CLIENT_ID"] %>&first_name=<%= landing.user.first_name %>&last_name=<%= landing.user.last_name %>&country_code=us&mobile_country_code=%2B1&mobile_phone=<%= landing.user.phone_number %>&product_id=b8e5c464-5de2-4539-a35a-986d6e58f186&pickup_latitude=<%= landing.airport.latitude %>&pickup_longitude=<%= landing.airport.longitude %>&pickup_nickname=<%= landing.airport.abbreviation %>&dropoff_latitude=<%= landing.destination.lat %>&dropoff_longitude=<%= landing.destination.long %>&dropoff_nickname=<%= landing.destination.name.gsub(" ", "%20") %>&dropoff_address=<%= landing.destination.address.gsub(" ", "%20") %>%20NY">At Airport Arrival - Get Your Uber Ride Here!</a>
+          <% else %>
+            You're Buddy is arriving at the airport first, they will get the Uber ride, contact them when you land!
+          <% end %>
+        </div>
 
-    <% else %>
-      <div class="col-md-4">
-        <h4><%= landing.user.first_name %>'s Flight Details</h4>
-        <ul>
-          <li><strong>Arrival Airport:</strong> <%= landing.airport.abbreviation %></li>
-          <li><strong>Airline:</strong> <%= landing.airline %></li>
-          <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
-          <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
-        </ul>
-      </div>
-    <% end %>
-  <% end %>
+        <% else %>
+        <div class="col-md-6">
+          <h4><%= landing.user.first_name %>'s Flight Details</h4>
+          <ul>
+            <li><strong>Arrival Airport:</strong> <%= landing.airport.abbreviation %></li>
+            <li><strong>Airline:</strong> <%= landing.airline %></li>
+            <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
+            <li><strong>Flight Number:</strong> <%= landing.flight_num %></li>
+          </ul>
+        </div>
+        <% end %>
+      <% end %>
+  </div>
 </div>
 <br>
 
@@ -44,7 +51,5 @@
       <%= link_to "Back to your profile", user_path(current_user) %>
     </div>
   </div>
-<% end %>
-
-
-
+  <% end %>
+</div>
