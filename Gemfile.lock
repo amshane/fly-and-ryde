@@ -91,6 +91,9 @@ GEM
     http (0.5.1)
       http_parser.rb
     http_parser.rb (0.6.0)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
@@ -265,6 +268,7 @@ DEPENDENCIES
   geocoder
   google-analytics-rails
   guard-rspec
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   omniauth
