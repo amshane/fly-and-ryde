@@ -1,17 +1,43 @@
-<div class="row">
-
-  <h1>Sign Up</h1>
-
-  <%= form_for @user, {:id => 'userForm'} do |f| %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %><br>
-
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %><br>
-
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number, :class => "form-control" %>
-    <%= f.submit "Sign Up", :class => "btn btn-primary" %>
-  <% end %>
-
+  <div class="hero inner-page">
+    <div class="container">
+      <div class="intro">
+        <h2 style=>SIGN UP<span class="tblue">.</span></h2>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="container" style="padding-top: 30px;">
+  <div class="comment-form">
+    <div class="page-title text-center">
+      <h3 class="welcome-user">Make Your Profile</h3><br>
+      <%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
+        <div class="form-group">
+          <%= f.label :first_name, :class => "col-sm-5 control-label page-text" %>
+          <div class="col-sm-3">
+            <%= f.text_field :first_name, :class => "form-control page-text"%><br>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name, :class => "col-sm-5 control-label page-text" %>
+          <div class="col-sm-3">
+            <%= f.text_field :last_name, :class => "form-control page-text" %><br>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone_number, "Phone number, only digits please!", :class => "col-sm-5 control-label page-text" %>
+          <div class="col-sm-3">
+            <%= f.text_field :phone_number, {:class => "form-control page-text", :placeholder => "5555555555"} %><br>
+          </div>
+        </div>
+
+        <%= f.submit "SIGN UP", :class => "btn btn-primary page-text" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>

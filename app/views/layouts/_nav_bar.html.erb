@@ -10,12 +10,11 @@
         </div>
         <div class="navigation pull-right">
           <% if current_user %>
-            <%= link_to "Hello, #{current_user.first_name}!", user_path(current_user) %>
-            <%= link_to "Sign Out", signout_path %>
+            <%= link_to "Hello, #{current_user.first_name}!", user_path(current_user), :class=> "page-text" %>
+            <%= link_to "Sign Out", signout_path, :class=> "page-text" %>
           <% else %>
-            <%= link_to "Sign in with Uber", "/auth/Uber" %>
+            <%= link_to "Sign in with Uber", "/auth/Uber", :class=> "page-text" %>
           <% end %>
-          <a href="/">Home</a>
         </div>
       </div>
     </div>
