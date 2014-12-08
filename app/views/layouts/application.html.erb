@@ -7,9 +7,52 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- Top Starts -->
-  <!-- <div class="container"> -->
+
+  <div class="top">
+
     <%= render "layouts/nav_bar" %>
+
       <%= yield %>
-</body>
+
+    <!-- Footer starts -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-3 col-xs-4">
+            <div class="footer-link">
+              <h5><%= link_to "FLY-N-RYDE HOME", root_url %></h5>
+            </div>
+          </div>
+          <div class="col-md-2 col-xs-4">
+            <div class="footer-link">
+              <h5><%= link_to "ABOUT US", about_path %></h5>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-4">
+            <div class="footer-link">
+              <h5><%= link_to "PRIVACY POLICY", privacy_path %></h5>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-18 col-md-12">
+            <h5 class="text-center">Made with<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red;"></span>At The Flatiron School, NYC</h5>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+            <div class="copy text-center">
+              &copy; 2013 <a href="#">Fasi</a> - Designed by <a href="http://responsivewebinc.com/bootstrap-themes">Bootstrap Themes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Ends -->
+  </body>
 </html>

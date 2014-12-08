@@ -1,25 +1,25 @@
 <!-- Header Starts -->
-<div class="top">
-<header>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="logo">
-          <h1><a href="#">Fly<span class="tblue">-n-</span>Ryde</a></h1>
+<!-- <div class="top"> -->
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="logo">
+            <h1><a href="/">Fly<span class="tblue">-n-</span>Ryde</a></h1>
+          </div>
+        </div>
+        <div class="navigation pull-right">
+          <% if current_user %>
+            <%= link_to "Hello, #{current_user.first_name}!", user_path(current_user) %>
+            <%= link_to "Sign Out", signout_path %>
+          <% else %>
+            <%= link_to "Sign in with Uber", "/auth/Uber" %>
+          <% end %>
+          <a href="/">Home</a>
         </div>
       </div>
-      <div class="navigation pull-right">
-        <% if current_user %>
-          <%= link_to "Hello, #{current_user.first_name}!", user_path(current_user) %>
-          <%= link_to "Sign Out", signout_path %>
-        <% else %>
-          <%= link_to "Sign in with Uber", "/auth/Uber" %>
-        <% end %>
-        <a href="/">Home</a>
-      </div>
     </div>
-  </div>
-</header>
-</div>
+  </header>
+<!-- </div> -->
 <!-- Header Ends -->
 
