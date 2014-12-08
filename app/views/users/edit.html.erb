@@ -1,29 +1,31 @@
-<div class="comment-form">
-  <div class="page-title text-center">
-    <h4>Edit Your Profile</h4><br>
-    <%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
-      <div class="form-group">
-        <%= f.label :first_name, :class => "col-sm-3 control-label" %>
-        <div class="col-sm-6">
-          <%= f.text_field :first_name, :class => "form-control"%><br>
+<div class="container" style="padding-top: 30px;">
+  <div class="comment-form">
+    <div class="page-title text-center">
+      <h3 class="welcome-user">Edit Your Profile</h3><br>
+      <%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
+        <div class="form-group">
+          <%= f.label :first_name, :class => "col-sm-3 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :first_name, :class => "form-control"%><br>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :last_name, :class => "col-sm-3 control-label" %>
-        <div class="col-sm-6">
-          <%= f.text_field :last_name, :class => "form-control" %><br>
+        <div class="form-group">
+          <%= f.label :last_name, :class => "col-sm-3 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :last_name, :class => "form-control" %><br>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :phone_number, "Phone number, only digits please!", :class => "col-sm-3 control-label" %>
-        <div class="col-sm-6">
-          <%= f.text_field :phone_number, {:class => "form-control", :placeholder => "5555555555"} %><br>
+        <div class="form-group">
+          <%= f.label :phone_number, "Phone number, only digits please!", :class => "col-sm-3 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :phone_number, {:class => "form-control", :placeholder => "5555555555"} %><br>
+          </div>
         </div>
-      </div>
 
-      <%= f.submit "Submit", :class => "btn btn-primary" %>
-    <% end %>
+        <%= f.submit "Submit", :class => "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
