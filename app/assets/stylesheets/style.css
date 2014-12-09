@@ -11,6 +11,62 @@ Designed by : http://responsivewebinc.com
 /* Droid Serif */
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic);
 
+/*Notice CSS*/
+
+#notice {
+  background-color: #52e978;   
+  color: white;
+  width: 100%;
+  text-align: center;
+  border-radius:3px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+#notice-close {
+  position: absolute;
+  top: -5px;
+  right: 1.4px;
+  font-size: 1.5em;
+}
+
+#notice-close:hover {
+  cursor: pointer;
+}
+
+#notice > p {
+  margin: 0px;
+  font-size: 1.25em;
+  padding: 10px;
+}
+
+#error {
+  background-color: crimson;   
+  color: white;
+  width: 100%;
+  text-align: center;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+#error-close {
+  position: absolute;
+  top: -5px;
+  right: 1.4px;
+  font-size: 1.5em;
+}
+
+#error-close:hover {
+  cursor: pointer;
+}
+
+#error > p {
+  margin: 0px;
+  font-size: 1.25em;
+  padding: 10px;
+}
+
 /* Basic CSS starts */
 
 html {
@@ -1844,6 +1900,8 @@ footer .copy{
   .sidebar{
     margin-top:20px;
   }
+
+
   
 
 }

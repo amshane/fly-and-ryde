@@ -6,7 +6,8 @@ class DestinationsController < ApplicationController
     if @destination.save && @destination.get_neighborhood_and_borough
       redirect_to user_path(@user)
     else
-      redirect_to user_path(@user), :notice => "error creating destination"
+      flash[:error] = "Destination must have unique name and valid address!"
+      redirect_to user_path(@user)
     end
   end
 
@@ -19,6 +20,7 @@ class DestinationsController < ApplicationController
     if @destination.update(destination_params) 
       redirect_to user_path(@destination.user)
     else
+      flash.now[:error] = "Destination must have unique name and valid address!"
       render "edit"
     end
   end

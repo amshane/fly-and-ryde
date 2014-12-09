@@ -29,7 +29,8 @@ class UsersController < ApplicationController
     if @user.update(user_params) && @user.valid_phone_number(user_params[:phone_number])
       redirect_to user_path(@user)
     else
-      render "edit", :notice => "You must enter your phone number to continue!"
+      flash.now[:error] = "You must enter your phone number to continue!"
+      render "edit" 
     end
   end
 

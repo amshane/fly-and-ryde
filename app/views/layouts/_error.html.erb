@@ -1,0 +1,8 @@
+<% if flash[:error] %>
+  <div id="error">
+    <div id="error-close">
+      <i class="fa fa-times"></i>
+    </div>
+    <p><%= flash[:error] %></p>
+  </div>
+<% end %>

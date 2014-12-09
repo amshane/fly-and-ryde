@@ -20,6 +20,7 @@ class LandingsController < ApplicationController
     if @landing.save
       redirect_to user_landing_path(@user, @landing)
     else
+      flash.now[:error] = "Please fill in all fields!"
       render "new"
     end
   end
@@ -48,6 +49,7 @@ class LandingsController < ApplicationController
     if @landing.update(landing_params)
       redirect_to user_landing_path(@user, @landing)
     else
+      flash.now[:error] = "Please fill in all fields!"
       render "edit"
     end
   end

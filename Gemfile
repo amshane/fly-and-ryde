@@ -79,3 +79,5 @@ gem "figaro"
 gem 'validates_formatting_of'
 
 gem 'uber-ruby', require: 'uber'
+
+gem 'font-awesome-rails'
