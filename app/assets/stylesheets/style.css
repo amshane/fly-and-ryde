@@ -13,9 +13,15 @@ Designed by : http://responsivewebinc.com
 
 /* Basic CSS starts */
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body{
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
+  margin-bottom: 226px;
 /*  background: url('/assets/nyc-light.jpg');
   background-size: cover;
   background-position:center;*/
@@ -1537,10 +1543,10 @@ footer{
   padding-top:30px;
   background:#000 url('/assets/3.png') repeat;
   color:#ccc;
-  width: 100%;
-  left: 0;
-  bottom: 0;
   position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 226px;
 }
 
 footer  a{
