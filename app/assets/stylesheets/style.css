@@ -1537,6 +1537,10 @@ footer{
   padding-top:30px;
   background:#000 url('/assets/3.png') repeat;
   color:#ccc;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: absolute;
 }
 
 footer  a{
