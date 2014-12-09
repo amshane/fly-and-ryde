@@ -24,25 +24,24 @@
                 <li><strong>ARRIVAL TIME:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
                 <li><strong>FLIGHT NUMBER:</strong> <%= landing.flight_num %></li>
               </ul>
-
-<!--               <#% if @ride.surge >1.0 %>
-                <h5 class="page-text">Uber is experiencing unusually high demand and your cost will have a surge of <%#= @ride.surge %>.</h5>
-                <h5 class="page-text">Your estimated cost already reflects the current surge.</h5>
-              <#% end %> -->
-<!--               <h5 class="page-text">Your estimated split cost will be $<%#= @ride.split_estimate %>.</h5>
-              <h5 class="page-text">You're saving $<%#= (@ride.x_price_estimate)-@ride.split_estimate %>.</h5> -->
-
               <br>
               <% if landing.arrival_time < landing.get_confirmed_match.arrival_time && landing.user == current_user %>
                 <% if browser.mobile? %>
                   <h3><p class="disclaimer page-text btn btn-primary">Wow! You're on an iPhone. Cool. Head <a href="uber://?client_id=qOF-stmiJB_Xuo6ayZVo2DI3r7TEmSl6&action=setPickup&pickup[latitude]=40.6413111&pickup[longitude]=-73.7781391&pickup[nickname]=UbERRR&dropoff[latitude]=40.740235&dropoff[longitude]=-73.97964700000001&dropoff[nickname]=House&dropoff[formatted_address]=240%20e%2027th%20st&product_id=b8e5c464-5de2-4539-a35a-986d6e58f186">right HERE</a> to bump out to the actual Uber app and tap away to request your ride.</p></h3>
                 <% else %>
                   <h3><a href="https://m.uber.com/sign-up?client_id=<%= ENV["UBER_CLIENT_ID"] %>&first_name=<%= landing.user.first_name %>&last_name=<%= landing.user.last_name %>&country_code=us&mobile_country_code=%2B1&mobile_phone=<%= landing.user.phone_number %>&product_id=b8e5c464-5de2-4539-a35a-986d6e58f186&pickup_latitude=<%= landing.airport.latitude %>&pickup_longitude=<%= landing.airport.longitude %>&pickup_nickname=<%= landing.airport.abbreviation %>&dropoff_latitude=<%= landing.destination.lat %>&dropoff_longitude=<%= landing.destination.long %>&dropoff_nickname=<%= landing.destination.name.gsub(" ", "%20") %>&dropoff_address=<%= landing.destination.address.gsub(" ", "%20") %>%20NY"><div class="btn btn-primary page-text">At Airport Arrival - Get Your Uber Ride Here!</div></a></h3><br>
-                  <h5 class="page-text">If you request an UberX right now, your estimated pickup wait is <%= @ride.x_time_estimate %> minutes.</h5>
+                  <h5 class="page-text">If you request an UberX right now, your estimated pickup wait is <%= @ride.x_time_estimate %> minutes.</h5><br>
                 <% end %>
 
+                <% if @ride.surge >1.0 %>
+                  <h5 class="page-text">Uber is experiencing unusually high demand and your cost will have a surge of <%= @ride.surge %>.</h5>
+                  <h5 class="page-text">Your estimated cost already reflects the current surge.</h5>
+                <% end %>
+                <h5 class="page-text">Your estimated split cost will be $<%= @ride.split_estimate %>.</h5>
+                <h5 class="page-text">You're saving $<%= (@ride.x_price_estimate)-@ride.split_estimate %>.</h5>
+
               <% else %>
-                <h5 class="page-text">You're Buddy will arrive airport before you. They will get the Uber ride, contact them when you land!</h5>
+                <h5 class="page-text">Your Buddy will arrive airport before you. They will get the Uber ride, contact them when you land!</h5>
               <% end %>
             </div>
           </div>

@@ -15,52 +15,57 @@
           <%= form_for([@user, @landing], :html => {:class => "form-horizontal"}) do |f| %>
             <div class="form-group">
              <%= f.hidden_field :user_id, :value => @user.id %>
-             </div>
-             <div class="form-group">
-               <%= f.label :airport_id, "Airport", :class => "col-sm-5 control-label ride-user-font" %>
-               <div class="col-sm-3">
-                 <%= f.collection_select :airport_id, Airport.all, :id, :name, {:prompt => "Select your airport"}, :class => "ride-user-font form-control" %><br>
-               </div>
-             </div>
-
-
-          <div class="form-group">
-            <%= f.label :airline, "Airline", :class => "col-sm-5 control-label ride-user-font" %>
-            <div class="col-sm-3">
-              <%= f.text_field :airline, :class => "form-control ride-user-font" %><br>
-           </div>
-         </div>
-
-          <div class="form-group">
-            <%= f.label :flight_num, "Flight Number", :class => "col-sm-5 control-label ride-user-font" %>
-            <div class="col-sm-3">
-              <%= f.text_field :flight_num, :class => "form-control ride-user-font" %><br>
-           </div>
-         </div>
-
-          <div class="form-group">
-            <%= f.label :arrival_date, "Arrival Date", :class => "col-sm-5 control-label ride-user-font" %>
-            <div class="col-sm-3">
-              <%= f.date_field :arrival_date, :class => "form-control ride-user-font" %><br>
-           </div>
-         </div>
-
-          <div class="form-group">
-            <%= f.label :arrival_time, "Arrival Time", :class => "col-sm-5 control-label ride-user-font" %>
-            <div class="col-sm-3">
-              <%= f.time_field :arrival_time, :class => "form-control ride-user-font" %><br>
-           </div>
-         </div>
-
-          <div class="form-group">
-            <%= f.label :destination_id, "Destination", :class => "col-sm-5 control-label ride-user-font" %>
-            <div class="col-sm-3">
-              <%= f.collection_select :destination_id, @user.destinations, :id, :name, {:prompt => "Select your destination"}, :class => "ride-user-font form-control" %><br> 
-              <h3><strong><%= link_to "Make a new destination", user_path(@user), :class => "page-text" %></strong></h3><br>
-              <h3><%= f.submit "Submit flight", :class => "btn btn-primary page-text" %></h3>
-              <% end %>
             </div>
-          </div>
+            <div class="form-group">
+              <%= f.label :airport_id, "Airport", :class => "col-sm-5 control-label ride-user-font" %>
+              <div class="col-sm-3">
+                <%= f.collection_select :airport_id, Airport.all, :id, :name, {:prompt => "Select your airport"}, :class => "ride-user-font form-control" %><br>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <%= f.label :airline, "Airline", :class => "col-sm-5 control-label ride-user-font" %>
+              <div class="col-sm-3">
+                <%= f.text_field :airline, :class => "form-control ride-user-font" %><br>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :flight_num, "Flight Number", :class => "col-sm-5 control-label ride-user-font" %>
+              <div class="col-sm-3">
+                <%= f.text_field :flight_num, :class => "form-control ride-user-font" %><br>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :arrival_date, "Arrival Date", :class => "col-sm-5 control-label ride-user-font" %>
+              <div class="col-sm-3">
+                <%= f.date_field :arrival_date, :class => "form-control ride-user-font" %><br>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :arrival_time, "Arrival Time", :class => "col-sm-5 control-label ride-user-font" %>
+              <div class="col-sm-3">
+                <%= f.time_field :arrival_time, :class => "form-control ride-user-font" %><br>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :destination_id, "Destination", :class => "col-sm-5 control-label ride-user-font" %>
+              <div class="col-sm-3">
+                <%= f.collection_select :destination_id, @user.destinations, :id, :name, {:prompt => "Select your destination"}, :class => "ride-user-font form-control" %> 
+              </div>
+            </div>
+
+            <div>
+              <h3><%= link_to "Make a new destination", user_path(@user), :class => "page-text" %></h3><br>
+              <div class="col-md-12">
+                <h3><%= f.submit "Submit flight", :class => "btn btn-primary page-text" %></h3>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
