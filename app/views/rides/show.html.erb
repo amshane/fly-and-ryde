@@ -51,6 +51,7 @@
             <div class="ride-user-font">
               <br>
               <ul>
+                <li><strong>Phone Number:</strong> <a href="tel:<%= number_to_phone(landing.user.phone_number) %>">Call Or Text <%= landing.user.first_name %>!</a></li>
                 <li><strong>Arrival Airport:</strong> <%= landing.airport.abbreviation %></li>
                 <li><strong>Airline:</strong> <%= landing.airline %></li>
                 <li><strong>Arrival Time:</strong> <%= landing.arrival_time.strftime("%I:%M %p")  %></li>
