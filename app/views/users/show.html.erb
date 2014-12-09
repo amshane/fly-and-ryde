@@ -1,63 +1,86 @@
-<div class="row">
-  <div class="col-md-6">
-    <h1>Welcome <%= @user.first_name %>!</h1>
-    <h4>Your phone number: <%= number_to_phone(@user.phone_number)%></h4>
-    <%= link_to "Edit Your Profile", edit_user_path(@user) %>
-  </div>
-  <div class="col-md-6">
-    <h3>Leaving on a trip?</h3>
-    <%= link_to "Find a carpool buddy", new_user_landing_path(@user), :class=> "btn btn-primary" %>
+  <div class="hero inner-page">
+    <div class="container">
+      <div class="intro">
+        <h2 style="padding-left: 30px;">YOUR RIDE<span class="tblue">-</span>SHARE BOARD<span class="tblue">.</span></h2>
+      </div>
+    </div>
   </div>
 </div>
+<div class="container" style="padding-top: 30px; padding-left: 60px;">
+  <div class="row">
+    <div class="page-title">
 
-<% if @user.pending_landings.size > 0 %>
-  <%= render "pending" %>
-<% end %>
+      <div class="col-md-6">
+        <h3 class="welcome-user"><strong>Welcome <%= @user.first_name %>!</strong></h3>
+        <h5 class="ride-user-font"><strong>Your phone number:</strong> <%= number_to_phone(@user.phone_number)%></h5>
+        <h5 class="page-text"><%= link_to "Edit Your Profile", edit_user_path(@user) %> </h5>
+      </div>
+    <br>
+    </div>
+    <div class="col-md-6">
+      <h4 class="other-headers">Leaving on a trip<span class="tblue">?</span></h4>
+      <h3><%= link_to "Find a carpool buddy", new_user_landing_path(@user), :class=> "btn btn-primary page-text" %></h3>
+    </div>
+  </div>
 
-<% if @user.confirmed_landings.size > 0 %>
-  <%= render "confirmed" %>
-<% end %>
+  <br>
+  <% if @user.pending_landings.size > 0 %>
+    <%= render "pending" %>
+  <% end %>
 
-<% if @user.available_landings.size > 0 %>
-  <%= render "available" %>
-<% end %>
+  <% if @user.confirmed_landings.size > 0 %>
+    <%= render "confirmed" %>
+  <% end %>
 
-<% if @user.requested_landings.size > 0 %>
-  <%= render "requested" %>
-<% end %>
+  <% if @user.available_landings.size > 0 %>
+    <%= render "available" %>
+  <% end %>
 
-<div class="row">
+  <% if @user.requested_landings.size > 0 %>
+    <%= render "requested" %>
+  <% end %>
 
-  <div class="col-md-6">
-    <h3>Destinations</h3>
-    <ul>
-      <% @user.destinations.each do |destination| %>
-        <li><%= destination.name.capitalize %>: <%= destination.address %></li>
-        Neighborhood: <%= destination.neighborhood %><br>
-        Borough: <%= destination.borough %><br>
-        <%= link_to "Edit", edit_destination_path(destination) %>  -    
-        <%= link_to "Delete", destination_path(destination), method: :delete, data: {:confirm => "Are you sure you want to delete this destination?"} %>
+  <div class="row" style="padding-top: 30px;">
+
+    <div class="col-md-6">
+      <h4 class="other-headers">Destinations<span class="tblue">.</span></h4>
+      <div class="ride-user-font">
+        <ul>
+          <% @user.destinations.each do |destination| %>
+            <h5><li class="ride-user-font"><strong><%= destination.name.capitalize %>:</strong> <%= destination.address %></li></h5>
+            <h5 class="ride-user-font"><strong>Neighborhood:</strong> <%= destination.neighborhood %></h5>
+            <h5 class="ride-user-font"><strong>Borough:</strong> <%= destination.borough %></h5>
+            <h5 class="page-text"><%= link_to "Edit", edit_destination_path(destination) %>  -    
+            <%= link_to "Delete", destination_path(destination), method: :delete, data: {:confirm => "Are you sure you want to delete this destination?"} %></h5>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4 class="other-headers">Make a New Destination<span class="tblue">.</span></h4>
+      <%= form_for @destination, :html => {:class => "form-horizontal"} do |f| %>
+        <%= f.hidden_field :user_id, :value => @user.id %><br>
+
+        <div class="form-group">
+          <%= f.label :name, :class => "ride-user-font col-sm-2" %>
+          <div class="col-sm-4">
+            <%= f.text_field :name, :class => "ride-user-font" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :address, :class => "ride-user-font col-sm-2" %>
+          <div class="col-sm-4">
+            <%= f.text_field :address, :class => "ride-user-font" %>
+          </div>
+        </div>
+        <h3><%= f.submit "MAKE DESTINATION", {:class=> "btn btn-primary page-text"} %></h3>
       <% end %>
-    </ul>
+    </div>
+
   </div>
-
-  <div class="col-md-6">
-    <h3>Make a New Destination</h3>
-    <%= form_for @destination, :html => {:role=>"form"} do |f| %>
-      <%= f.hidden_field :user_id, :value => @user.id %><br>
-
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :address %>
-        <%= f.text_field :address %>
-      </div>
-      
-      <%= f.submit "Make destination", {:class=> "btn btn-primary"} %>
-    <% end %>
-  </div>
-
 </div>
+<br>
+<br>
+<br>

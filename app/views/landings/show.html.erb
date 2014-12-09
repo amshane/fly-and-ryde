@@ -1,44 +1,74 @@
-<h2>Other Riders Arriving At <%= @landing.airport.name%></h2>
+  <div class="hero inner-page">
+    <div class="container">
+      <div class="intro">
+        <h2 style="padding-left: 30px;">YOUR LANDING BOARD<span class="tblue">.</span></h2>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <p>Your trip details:
-    <%= @landing.airport.abbreviation %> -
-    <%= @landing.arrival_date.strftime("%b %d, %Y") %> -
-    <%= @landing.arrival_time.strftime("%I:%M %p") %><br>
-    
-    <% if @landing.status != "confirmed" %>
-      <%= link_to "Edit your flight information", edit_user_landing_path(@landing.user,@landing) %>
-    <% else %>
-      <%= link_to "See your ride buddy!", ride_path(@landing.ride) %>
-    <% end %>
-  </p>
-  <br>
-  <% if @landing.status == "available" %>
-    <% if @landing.matches.size < 1 %>
-      <h4>No one else is traveling around this time, please try again later!</h4>
-    <% else %>
-      <% @landing.matches.each do |match| %>
-        <p>
-          Name: <%= match.user.first_name %><br>
-          Arrival Time: <%= match.arrival_time.strftime("%I:%M %p") %><br>
-          <% if @landing.arrival_time < match.arrival_time %>
-            Your Expected Wait Time Is: <%= @landing.get_wait_time(match) %><br>
+<div class="container" style="padding-top: 30px; padding-left: 60px;">
+  <div class="row">
+    <div class="page-title">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="welcome-user"><strong>Other Riders Arriving At <%= @landing.airport.name%></strong></h2>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="ride-user-font"><strong>Your trip details:</strong>
+          <%= @landing.airport.abbreviation %> -
+          <%= @landing.arrival_date.strftime("%b %d, %Y") %> -
+          <%= @landing.arrival_time.strftime("%I:%M %p") %></h3>
+          <% if @landing.status != "confirmed" %>
+            <h5><%= link_to "Edit your flight information", edit_user_landing_path(@landing.user,@landing), :class => "page-text" %></h5>
           <% else %>
-            <%= match.user.first_name %> Will Land <%= @landing.get_wait_time(match) %> Before You<br>
-          <%end%>
-          <%= match.user.first_name %>'s destination is <%= match.destination.neighborhood %>, which is also in <%= match.destination.borough %>!
-          <%= form_for @ride do |f| %>
-            <%= f.hidden_field :user_id, :value => @user.id %>
-            <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
-            <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
-            <%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary" %>
+            <h5><%= link_to "See your ride buddy!", ride_path(@landing.ride), :class => "page-text" %></h5>
           <% end %>
-        </p>
-      <% end %>
-    <% end %>
-  <% end %>
+        </div>
+      </div>
 
-
-<%= link_to "Go back to your profile", user_path(@user) %>
-
-
-
+      <div class="row" style="padding-top: 30px;">
+        <div class="col-md-12">
+          <% if @landing.status == "available" %>
+            <% if @landing.matches.size < 1 %>
+              <h4 class="ride-user-font">No one else is traveling around this time, please check again later!</h4><br>
+            <% else %>
+              <ul>
+                <% @landing.matches.each do |match| %>
+                  <h5><li class="ride-user-font"><strong>Name:</strong> <%= match.user.first_name %></li></h5>
+                  <h5 class="ride-user-font"><strong>Arrival Time:</strong> <%= match.arrival_time.strftime("%I:%M %p") %></h5>
+                  <ul style="padding-top: 2px;">
+                    <% if @landing.arrival_time < match.arrival_time %>
+                      <h5 class="ride-user-font"><strong>Your Expected Wait Time Is:</strong> <%= @landing.get_wait_time(match) %>.</h5>
+                    <% else %>
+                      <h5 class="ride-user-font"><%= match.user.first_name %> Will Land <%= @landing.get_wait_time(match) %> Before You.<h5>
+                    <%end%>
+                    <h5 class="ride-user-font"><%= match.user.first_name %>'s destination is <%= match.destination.neighborhood %>, which is also in <%= match.destination.borough %>.</h5>
+                  </ul>
+                  <br>
+                  <%= form_for @ride do |f| %>
+                    <%= f.hidden_field :user_id, :value => @user.id %>
+                    <%= f.hidden_field :requester_landing_id, :value => @landing.id %>
+                    <%= f.hidden_field :acceptor_landing_id, :value => match.id %>
+                    <h3><%= f.submit "Choose #{match.user.first_name}", :class => "btn btn-primary page-text" %></h3>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 30px;">
+        <div class="col-md-6">
+          <h3><%= link_to "Go back to your profile", user_path(@user), :class => "link-text" %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>

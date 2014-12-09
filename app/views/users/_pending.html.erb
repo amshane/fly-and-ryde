@@ -1,6 +1,7 @@
+<br>
 <div class="row">
   <div class="col-md-6">
-    <h3>Pending Ride-Shares</h3>
+    <h4 class="other-headers">Pending Ride<span class="tblue">-</span>Shares<span class="tblue">.</span></h4>
   </div>
 </div>
 
@@ -9,18 +10,20 @@
   <% matched_user = matched_landing.user %>
   <div class="row">
     <div class="col-md-6">
-      <h4 id="h4-inline-block"><%= matched_user.first_name %>: <%= matched_landing.arrival_time.strftime("%I:%M %p") %></h4>
+      <h4 id="h4-inline-block" class="ride-user-font" style="padding-left: 20px;"><strong><%= matched_user.first_name %>:</strong> <%= matched_landing.arrival_time.strftime("%I:%M %p") %></h4>
       <span>
 
         <%= form_for([@user, landing], :url => update_status_path(@user, landing), :html=>{:id=> "inline-form", :method => "patch"}) do |f| %>
           <%= f.hidden_field :status, :value => "complete" %>
-          <%= f.submit "Accept", :class => "btn btn-sm btn-success" %>
+          <h3 style="padding-left: 10px;"><%= f.submit "Accept", :class => "btn btn-sm btn-success page-text" %></h3>
         <% end %>
       </span>
+
       <span>
         <%= form_for([@user, landing], :url => update_status_path(@user, landing), :html=>{:id=> "inline-form", :method => "patch"}) do |f| %>
           <%= f.hidden_field :status, :value => "available" %>
-          <%= f.submit "Reject", :class => "btn btn-sm btn-danger"  %>
+          <h3 style="padding-left: 10px;"><%= f.submit "Reject", :class => "btn btn-sm btn-danger page-text" %></h3>
+
         <% end %>
       </span>
     </div>
