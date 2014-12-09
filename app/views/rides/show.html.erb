@@ -25,12 +25,12 @@
                 <li><strong>FLIGHT NUMBER:</strong> <%= landing.flight_num %></li>
               </ul>
 
-              <% if @ride.surge >1.0 %>
-                <h5 class="page-text">Uber is experiencing unusually high demand and your cost will have a surge of <%= @ride.surge %>.</h5>
+<!--               <#% if @ride.surge >1.0 %>
+                <h5 class="page-text">Uber is experiencing unusually high demand and your cost will have a surge of <%#= @ride.surge %>.</h5>
                 <h5 class="page-text">Your estimated cost already reflects the current surge.</h5>
-              <% end %>
-              <h5 class="page-text">Your estimated split cost will be $<%= @ride.split_estimate %>.</h5>
-              <h5 class="page-text">You're saving $<%= (@ride.x_price_estimate)-@ride.split_estimate %>.</h5>
+              <#% end %> -->
+<!--               <h5 class="page-text">Your estimated split cost will be $<%#= @ride.split_estimate %>.</h5>
+              <h5 class="page-text">You're saving $<%#= (@ride.x_price_estimate)-@ride.split_estimate %>.</h5> -->
 
               <br>
               <% if landing.arrival_time < landing.get_confirmed_match.arrival_time && landing.user == current_user %>

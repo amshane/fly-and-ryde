@@ -6,27 +6,27 @@
     </div>
   </div>
 </div>
-<div class="container" style="padding-top: 30px; padding-left: 60px;">
+<div class="container">
   <div class="comment-form">
     <div class="row">
-      <div class="col-md-12 center-container">
+      <div class="col-md-12 center-container" style="padding-top: 30px; padding-left: 60px;">
         <div class="page-title text-center">
           <h3 class="welcome-user"><strong>Your Destination</strong></h3><br>
           <%= form_for @destination, :html => {:class => "form-horizontal"} do |f| %>
           <div class="form-group">
-            <%= f.label :name, :class => "col-sm-5 control-label page-text" %>
+            <%= f.label :name, :class => "col-sm-5 control-label ride-user-font" %>
             <div class="col-sm-3">
-            <%= f.text_field :name, :class => "form-control page-text" %><br>
+            <%= f.text_field :name, :class => "form-control ride-user-font" %><br>
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :address, :class => "col-sm-5 control-label page-text" %>
+            <%= f.label :address, :class => "col-sm-5 control-label ride-user-font" %>
             <div class="col-sm-3">
-            <%= f.text_field :address,:class => "form-control page-text" %><br>
+            <%= f.text_field :address,:class => "form-control ride-user-font" %><br>
             </div>
           </div>
             
-            <%= f.submit "Edit Destination", {:class=> "btn btn-primary page-text"} %>
+            <h3><%= f.submit "Edit Destination", {:class=> "btn btn-primary page-text"} %></h3>
           <% end %>
         </div>
       </div>

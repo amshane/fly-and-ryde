@@ -4,6 +4,8 @@ class Landing < ActiveRecord::Base
   belongs_to :destination
   belongs_to :ride
 
+  validates :airline, :flight_num, :arrival_date, :arrival_time, :destination_id, :airport_id, presence: true
+
 
   def matches
     matches_array = []
