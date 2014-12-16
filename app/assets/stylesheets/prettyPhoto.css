@@ -135,7 +135,7 @@ a.pp_arrow_previous,a.pp_arrow_next{display:block;float:left;height:15px;margin-
 .pp_gallery div{float:left;overflow:hidden;position:relative}
 .pp_gallery ul{float:left;height:35px;position:relative;white-space:nowrap;margin:0 0 0 5px;padding:0}
 .pp_gallery ul a{border:1px rgba(0,0,0,0.5) solid;display:block;float:left;height:33px;overflow:hidden}
-.pp_gallery ul/assets/border:0}
+/*.pp_gallery ul/assets/border:0}*/
 .pp_gallery li{display:block;float:left;margin:0 5px 0 0;padding:0}
 .pp_gallery li.default a{background:url(/assets/prettyPhoto/facebook/default_thumbnail.gif) 0 0 no-repeat;display:block;height:33px;width:50px}
 .pp_gallery .pp_arrow_previous,.pp_gallery .pp_arrow_next{margin-top:7px!important}
