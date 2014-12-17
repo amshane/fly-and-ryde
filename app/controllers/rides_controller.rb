@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
 
-  before_action :authenticate_user, :only => [:show]
+  before_action :valid_ride, :authenticate_user, :only => [:show]
 
   def create
     @user = User.find(params[:ride][:user_id])
@@ -22,4 +22,9 @@ class RidesController < ApplicationController
   def authenticate_user
     redirect_to root_url unless Ride.find(params[:id]).users.include?(current_user)
   end
+
+  def valid_ride
+    redirect_to root_url if Ride.all.where(id: params[:id]) == []
+  end
+
 end
