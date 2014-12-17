@@ -34,7 +34,7 @@ gem 'omniauth-uber'
 
 gem 'geocoder'
 
-gem 'httparty'
+#gem 'httparty'
 
 gem 'browser'
 
