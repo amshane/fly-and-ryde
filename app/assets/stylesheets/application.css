@@ -52,7 +52,7 @@
 }
 
 #my-top {
-  background:#555 url('/assets/nyc4.JPG');
+  background:#555 url('nyc4.JPG');
   background-size: cover;
   background-position:0% 57%;
   border-bottom:1px solid #000;
