@@ -42,3 +42,11 @@
 #h4-inline-block {
   display: inline-block;
 }
+
+#fix {
+  margin-bottom: 226px;
+}
+
+#foot-fix {
+  height: 196px;
+}
