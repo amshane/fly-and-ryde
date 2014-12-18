@@ -51,7 +51,7 @@
   height: 196px;
 }
 
-.top{
+#my-top {
   background:#555 url('/assets/nyc4.JPG');
   background-size: cover;
   background-position:0% 57%;
